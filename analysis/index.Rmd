@@ -14,7 +14,7 @@ Topics:
 
 * [Table 1](table1.html)
 * [Regression](regression.html)
-* Survival Analysis
+* [Survival Analysis](survival.html)
 
 R Packages: 
 

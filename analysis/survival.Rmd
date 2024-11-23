@@ -1,0 +1,107 @@
+---
+title: "survival"
+author: "Chun-Hui Lin"
+date: "2024-11-22"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on conducting survival analyses inspiring by [Zabor's tutorial](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html) using [`lung`](https://rdrr.io/cran/survival/man/lung.html) dataset as the example.
+
+* Handle date-times stored as character with [`lubridate`](https://lubridate.tidyverse.org/) package.
+
+  * Identify the order of the year (**y**), month (**m**), day (**d**), hour (**h**),
+minute (**m**) and second (**s**) elements in your variable and apply the corresponding `ymd_hms()` function.
+
+  * `%--%` operator: equivalent to `difftime()`, such as `as.duration(start.date %--% end.date)/dyears(x = 1)`.
+  
+* Time-to-event outcomes: if the covariate violates the proportional hazards assumption, consider adding time interaction or stratifying by itself in the model.
+
+```{r, echo=F, message=F}
+library(survival); library(survminer); library(gtsummary)
+```
+
+## Kaplan-Meier Method
+
+### gtsummary::tbl_survfit()
+
+#### Median Survival
+
+```{r}
+survfit(Surv(time, status) ~ sex, lung) %>%
+  tbl_survfit(prob = 0.5,
+              label = sex ~ 'Sex',
+              label_header = "**Median Survival (days)**") %>%
+  add_p() %>% # equivalent: survdiff()
+  modify_header(label ~ "") %>%
+  bold_labels()
+```
+
+
+#### 1-year Survival
+
+```{r}
+survfit(Surv(time, status) ~ sex, lung) %>%
+  tbl_survfit(times = 365.25, # speify 1-year probability
+              label = sex ~ 'Sex',
+              label_header = "**1-year Survival (%)**", # specify column label
+              estimate_fun = ~ style_percent(.x, digits = 1)) %>%
+  modify_header(label ~ "") %>%
+  bold_labels()
+```
+
+### survminer::ggsurvplot()
+
+```{r, warning=F}
+ggsurvplot(survfit(Surv(time, status) ~ sex, lung), 
+           data = lung,
+           palette = c('#E7B800', '#2E9FDF'), # customize color palettes
+           linetype = 'strata', # line type by groups
+           conf.int = T, # add confidence interval
+           pval = T, # add p-value of log-rank test
+           surv.median.line = 'hv', # add median survival info
+           risk.table = T, # add risk table
+           risk.table.col = 'strata', # number at risk colored by groups
+           legend.title = 'Sex', # change legend title
+           legend.labs = c('Male', 'Female'), # change legend labels
+           xlab = 'Time in days', # customize x-axis label
+           ggtheme = theme_light())
+```
+
+### survminer::pairwise_survdiff()
+
+```{r}
+# multiple comparisons of survival curves
+pairwise_survdiff(Surv(ttdeath, death) ~ grade, trial)
+```
+
+## Cox PH Regression
+
+### gtsummary::tbl_regression
+
+```{r}
+tbl_regression(coxph(Surv(ttdeath, death) ~ trt + age + grade, trial),
+               exponentiate = T,
+               estimate_fun = ~ style_ratio(.x, digits = 2),
+               pvalue_fun = ~ style_pvalue(.x, digits = 2))
+```
+
+### survival::cox.zph()
+
+```{r}
+# test the proportional hazards assumption of model
+cox.zph(coxph(Surv(ttdeath, death) ~ trt + age + grade, trial))
+```
+
+### survminer::ggforest()
+
+* `ggforest()`
+
+  * `refLabel=` argument: customize label for reference levels.
+
+```{r, warning=F}
+# visualize model by forest plot
+ggforest(coxph(Surv(ttdeath, death) ~ trt + age + grade, as.data.frame(trial)),
+         refLabel = '--')
+```

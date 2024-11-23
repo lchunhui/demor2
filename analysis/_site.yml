@@ -11,6 +11,8 @@ navbar:
       href: table1.html
     - text: Regression
       href: regression.html
+    - text: Survival Analysis
+      href: survival.html
   - text: About
     href: about.html
   - text: License
