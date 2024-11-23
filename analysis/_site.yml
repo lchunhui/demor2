@@ -9,6 +9,8 @@ navbar:
     menu:
     - text: Table 1
       href: table1.html
+    - text: Regression
+      href: regression.html
   - text: About
     href: about.html
   - text: License

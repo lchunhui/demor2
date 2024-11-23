@@ -1,0 +1,90 @@
+---
+title: "Regression"
+author: "Chun-Hui Lin"
+date: "2024-11-22"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on generating regression tables from the  [tbl_regression()](https://www.danieldsjoberg.com/gtsummary/articles/tbl_regression.html) tutorial using [`trial`](https://www.danieldsjoberg.com/gtsummary/reference/trial.html) dataset as the example.
+
+* Model choice depends on outcome type. You can modify it based on your dataset.
+
+  * Continuous outcomes: linear regression; if the outcome is non-normally distributed, consider log-transformation. 
+  * Dichotomous outcomes: logistic regression; if the outcome is very common (greater than 10%), consider poisson regression with robust error variances. 
+  * Ordinal outcomes: multinomial logistic regression; if proportional odds assumption is applied, conduct [ordinal logistic regression](https://stats.oarc.ucla.edu/r/faq/ologit-coefficients/) instead.
+
+```{r, echo=FALSE, warning=FALSE}
+# install.packages('gtsummary')
+library(gtsummary)
+```
+
+## gtsummary::tbl_regression()
+
+* `tbl_regression()`
+
+  * `exponentiate=` argument: coefficient estimates exponentiate if `TRUE`.
+  * `estimate_fun=` argument: estimates round to specified digits.
+  
+### Linear Regression
+
+```{r}
+tbl_regression(lm(age ~ trt + grade, trial), 
+               estimate_fun = ~ style_sigfig(.x, digits = 2),
+               pvalue_fun = ~ style_pvalue(.x, digits = 2))
+```
+
+### Logistic Regression
+
+```{r}
+tbl_regression(glm(response ~ trt + age + grade, trial, family = 'binomial'), 
+               exponentiate = T,
+               estimate_fun = ~ style_ratio(.x, digits = 2),
+               pvalue_fun = ~ style_pvalue(.x, digits = 2))
+```
+
+### Poisson Regression
+
+* `coeftest()`
+
+  * `vcov=` argument: specify sandwich covariance matrix to obtain robust standard errors.
+
+```{r, message=F}
+tidy_robust(glm(response ~ trt + age + grade, trial, family = 'poisson'), 
+            exponentiate = T,
+            vcov = sandwich::sandwich,
+            estimate_fun = ~ style_ratio(.x, digits = 2),
+            pvalue_fun = ~ style_pvalue(.x, digits = 2)) %>%
+  finalfit::remove_intercept() %>%
+  select(term, estimate, conf.low, conf.high, p.value) %>%
+  as.data.frame() %>%
+  finalfit::condense_fit(estimate_name = "RR (robust SE)")
+```
+
+## Ordinal Outcome
+
+### Multinomial Logistic Regression
+
+```{r, echo=FALSE}
+trial$trt.factor = factor(trial$trt)
+```
+
+```{r}
+tbl_regression(nnet::multinom(grade ~ trt.factor, trial), 
+               exponentiate = T, 
+               label = trt.factor ~ 'Chemotherapy Treatment',
+               estimate_fun = ~ style_ratio(.x, digits = 2),
+               pvalue_fun = ~ style_pvalue(.x, digits = 2))
+```
+
+### Ordinal Logistic Regression
+
+```{r}
+broom::tidy(MASS::polr(grade ~ trt.factor, trial, Hess = T), 
+            conf.int = T, exponentiate = T, p.values = T) %>%
+  dplyr::filter(coef.type == 'coefficient') %>%
+  select(term, estimate, conf.low, conf.high, p.value) %>%
+  as.data.frame() %>%
+  finalfit::condense_fit(estimate_name = "OR")
+```

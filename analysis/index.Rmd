@@ -13,7 +13,7 @@ My notes on R codes and statistical topics for daily task as a biostatistician.
 Topics: 
 
 * [Table 1](table1.html)
-* Regression
+* [Regression](regression.html)
 * Survival Analysis
 
 R Packages: 
