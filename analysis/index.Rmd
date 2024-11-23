@@ -8,7 +8,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-My notes on R codes and statistical topics for daily task as a biostatistician.
+My notes on R programming and statistical topics for daily task as a biostatistician.
 
 Topics: 
 
@@ -18,5 +18,5 @@ Topics:
 
 R Packages: 
 
-* `tidyverse`
+* [`tidyverse`](tidyverse.html)
 * `twangContinuous`

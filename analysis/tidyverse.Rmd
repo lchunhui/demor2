@@ -1,0 +1,18 @@
+---
+title: "Tidyverse"
+author: "Chun-Hui Lin"
+date: "2024-11-23"
+output:
+  workflowr::wflow_html:
+    toc: false
+editor_options:
+  chunk_output_type: console
+---
+
+Core: 
+
+* forcats
+* readr
+* stringr
+* tidyr
+
