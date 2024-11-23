@@ -5,6 +5,10 @@ navbar:
   left:
   - text: Home
     href: index.html
+  - text: Topics
+    menu:
+    - text: Table 1
+      href: table1.html
   - text: About
     href: about.html
   - text: License

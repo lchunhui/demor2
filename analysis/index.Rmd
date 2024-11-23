@@ -10,9 +10,9 @@ editor_options:
 
 My notes on R codes and statistical topics for daily task as a biostatistician.
 
-Basic Topics: 
+Topics: 
 
-* Table 1
+* [Table 1](table1.html)
 * Regression
 * Survival Analysis
 
