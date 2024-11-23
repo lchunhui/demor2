@@ -1,0 +1,81 @@
+---
+title: "twangContinuous"
+author: "Chun-Hui Lin"
+date: "2024-11-23"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on generating propensity weights for continuous exposure inspiring by [Coffman and Griffin's tutorial](https://cran.r-project.org/web/packages/twangContinuous/vignettes/briefTutorial.html) using [`dat`](https://rdrr.io/cran/twangContinuous/man/dat.html) dataset as the example. It's quite useful when your model SEs blow up and you're trying to whittle down the confounder list without losing power. Traditional ways to handle this issue are explained below: 
+
+* Keep only the variables significantly (or **suggestive** p-value like <0.10) associated with both the exposure and the outcome.
+
+* Examine % change in effect size by comparing an unadjusted model to one only adjusting for that variable. Only if the **absolute** % change is large enough (say >10%), then include it in the final confounder list.
+
+```{r, echo=FALSE}
+# install.packages('twangContinuous')
+library(twangContinuous); library(gtsummary)
+```
+
+## Gradient Boosted Regression
+
+`ps.cont` calculates propensity scores by gradient boosted regression (GBR). `tss_0` is the continuous exposure represented the traumatic stress scale and `sfs8p_3` is the outcome measured the substance use frequency at 3-month follow-up. Other baseline covariates included in the propensity score model are potential confounders of the exposure and outcome. 
+
+* `ps.cont()`
+
+  * `n.trees=` argument: number of iterations run; adjust the number based on diagnostic plot.
+  * Other arguments can be set as default values for now. Check the [manual](https://cran.r-project.org/web/packages/twangContinuous/twangContinuous.pdf) and tutorial for detail.
+  
+```{r}
+set.seed(4869) # set seed to assure replicable results
+
+pswt = ps.cont(tss_0 ~ sfs8p_0 + sati_0 + sp_sm_0 + recov_0 + subsgrps_n + treat,
+               data = dat, n.trees = 500)
+```
+
+## Diagnositc Check
+
+The plot showed the balance measure as a function of the number of iterations in the GBR algorithm. Model balance reached optimal around 350-ish iteration.
+
+```{r iteration-plot}
+plot(pswt, plots = "optimize") # visualize the iteration process
+```
+
+The average absolute correlation `mean.wcor` was minimized at iteration `iter` 347, which means the specified `n.trees` allowed GBR to explore sufficiently complicated models. 
+
+```{r}
+summary(pswt)
+```
+
+Correlations between the exposure and potential confounders were all reduced to below 0.05 in the weighted data.
+
+```{r corr-plot}
+bal.table(pswt, digits = 3)
+plot(pswt, plots = "es") # visualize the balance table
+```
+
+## Causal Effect
+
+For every 1 point increase in baseline traumatic stress scale, the estimated substance frequency scale increased by 0.18 point.
+
+```{r}
+tbl_regression(lm(sfs8p_3 ~ tss_0, dat), 
+               label = tss_0 ~ 'Baseline Traumatic Stress',
+               estimate_fun = ~ style_sigfig(.x, digits = 3),
+               pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+  modify_caption('**Unweighted Linear Regression**')
+```
+
+After applying the propensity weights, the association between baseline traumatic stress and substance use at 3-month became insignificant.
+
+```{r}
+# extract propensity weights
+dat$wts = get.weights(pswt) 
+
+tbl_regression(lm(sfs8p_3 ~ tss_0, dat, weights = wts), 
+               label = tss_0 ~ 'Baseline Traumatic Stress',
+               estimate_fun = ~ style_sigfig(.x, digits = 3),
+               pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+  modify_caption('**Weighted Linear Regression**')
+```  

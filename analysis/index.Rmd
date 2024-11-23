@@ -19,4 +19,4 @@ Topics:
 R Packages: 
 
 * [`tidyverse`](tidyverse.html)
-* `twangContinuous`
+* [`twangContinuous`](twangContinuous.html)
