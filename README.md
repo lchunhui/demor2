@@ -1,5 +1,6 @@
-# demor2
+# demoR
 
-A [workflowr][] project.
+A [workflowr][] project [demoR][].
 
 [workflowr]: https://github.com/workflowr/workflowr
+[demor]: https://lchunhui.github.io/demor2/
