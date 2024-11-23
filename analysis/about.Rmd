@@ -7,4 +7,4 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+This website stores R codes and notes of statistical topics to ensure efficiency and reproducibility in work.

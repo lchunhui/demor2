@@ -8,4 +8,15 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+My notes on R codes and statistical topics for daily task as a biostatistician.
+
+Basic Topics: 
+
+* Table 1
+* Regression
+* Survival Analysis
+
+R Packages: 
+
+* `tidyverse`
+* `twangContinuous`
