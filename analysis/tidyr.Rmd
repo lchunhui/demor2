@@ -1,0 +1,144 @@
+---
+title: "tidyr"
+author: "Chun-Hui Lin"
+date: "2024-11-23"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on data tidying from the [`tidyr`](https://tidyr.tidyverse.org/) site.
+
+```{r, echo=FALSE, message=FALSE}
+# install.packages('tidyr')
+library(tidyr); library(tidyverse)
+```
+
+```{r, echo=FALSE, message=FALSE}
+daily = read_csv("output/daily.csv")
+updates = read_csv("output/updates.csv")
+```
+
+## Pivoting
+
+### Wide to Long
+
+* `pivot_longer()`
+
+  * `names_prefix=` argument: remove matching text form the start of each variable name.
+  * `names_sep=` argument: specify positions or regular expression to break on.
+  * `names_pattern=` argument: specify regular expression to split variable name into multiple columns.
+  * `names_transform=` argument: convert variable type to integer. 
+  * `values_drop_na=` argument: drop `NA` rows if `TRUE`.
+
+* Regular Expressions
+
+  * `.`: matches any character. 
+  * `?`: 0 or 1.
+  * `*`: 0 or more.
+
+```{r}
+# Numeric data in columns names
+billboard %>% 
+  pivot_longer(
+    cols = tidyselect::starts_with("wk"), 
+    names_to = "week", 
+    names_prefix = "wk",
+    names_transform = as.integer, # equivalent: readr::parse_number
+    values_to = "rank",
+    values_drop_na = TRUE,
+  )
+```
+
+```{r}
+# Many variables in column names
+(who_wide = who %>% 
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65,
+    names_to = c("diagnosis", "gender", "age"), 
+    names_pattern = "new_?(.*)_(.)(.*)",
+    names_transform = list(
+      gender = as.factor, # equivalent: readr::parse_factor
+      age = ~ readr::parse_factor(
+        .x,
+        levels = c("014", "1524", "2534", "3544", "4554", "5564", "65"), 
+        ordered = TRUE
+      )
+    ),
+    values_to = "count",
+    values_drop_na = TRUE,
+  ))
+```
+
+```{r}
+# Multiple observations per row
+household %>% 
+  pivot_longer(
+    cols = !family, 
+    names_to = c(".value", "child"), # part of the column name specify the value being measured
+    names_sep = "_", 
+    values_drop_na = TRUE
+  )
+```
+
+### Long to Wide
+
+* `pivot_wider()`
+
+  * `name_glue=` argument: use `name_from` columns to create custom column names.
+  * `name_expand=` argument: show implicit factor levels if `TRUE`.
+  * `values_fill=` argument: specify the value filled in with when missing.
+  * `values_fn=` argument: specify the function apply to the value.
+  * `unused_fn=` argument: summarize the values from the unused column by specified function.
+
+```{r}
+# Capture-recapture data
+fish_encounters %>% 
+  pivot_wider(
+    names_from = station, 
+    values_from = seen,
+    values_fill = 0
+  )
+```
+
+```{r}
+# Aggregation
+warpbreaks %>% 
+  pivot_wider(
+    names_from = wool, 
+    values_from = breaks,
+    values_fn = mean
+  )
+```
+
+```{r}
+# Generate column name from multiple variables
+who_wide %>%
+  pivot_wider(
+    names_from = c(diagnosis, gender, age),
+    values_from = count,
+    names_glue = "cnt_{diagnosis}_{gender}_{age}"
+  )
+```
+
+```{r}
+# Tidy census
+daily %>% 
+  pivot_wider(
+    names_from = day, 
+    values_from = value, 
+    names_expand = TRUE,
+    values_fill = 0
+  )
+```
+
+```{r}
+# Unused columns
+updates %>% 
+  pivot_wider(
+    id_cols = county, 
+    names_from = system, 
+    values_from = value,
+    unused_fn = list(date = max)
+  )
+```

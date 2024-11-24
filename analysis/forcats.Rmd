@@ -1,0 +1,62 @@
+---
+title: "forcats"
+author: "Chun-Hui Lin"
+date: "2024-11-23"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on data wrangling for factors from the [`forcats`](https://forcats.tidyverse.org/) site using [`starwars`](https://dplyr.tidyverse.org/reference/starwars.html) dataset as the example. 
+
+```{r, echo=FALSE, message=FALSE}
+# install.packages('forcats')
+library(forcats); library(tidyverse)
+```
+
+## Add/Drop/Reverse Levels
+
+```{r}
+fct_expand(factor(c("a", "b"), levels = c("a", "b")), "c")
+
+fct_drop(factor(c("a", "b"), levels = c("a", "b", "c")))
+
+fct_rev(factor(c("a", "b", "c"), levels = c("a", "b", "c")))
+```
+
+## Reorder Levels
+
+* `fct_infreq()`: order level by its frequency.
+
+```{r}
+ggplot(starwars, aes(y = fct_infreq(hair_color))) + 
+  geom_bar(fill = "steelblue", width = 0.75) + 
+  labs(x = "Frequency", y = "Hair color") + 
+  theme_bw()
+```
+
+## Collapse Levels
+
+* `fct_lump()`: collapse infrequent levels into one "Other" level.
+
+  * `n=` argument: specify positive/negative n to keep most/least common n levels.
+  * `prop=` argument: specify positive % to keep levels with at least % frequency.
+  * `other_level=` argument: rename the lumped "Other" level.
+
+```{r}
+ggplot(starwars, aes(y = fct_infreq(fct_lump(skin_color, n = 5, other_level = "other")))) + 
+  geom_bar(fill = "steelblue", width = 0.75) + 
+  labs(x = "Frequency", y = "Skin color") + 
+  theme_bw()
+```
+
+## Sort Levels
+
+* `fct_reorder()`: reorder levels by another variable.
+
+```{r}
+ggplot(iris, aes(x = fct_reorder(Species, Sepal.Width), y = Sepal.Width)) +
+  geom_boxplot(fill = "steelblue", width = 0.75) + 
+  labs(x = "Species", y = "Sepal width") +
+  theme_bw()
+```

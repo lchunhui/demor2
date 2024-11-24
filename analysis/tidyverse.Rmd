@@ -11,8 +11,7 @@ editor_options:
 
 Core: 
 
-* forcats
-* readr
+* [forcats](forcats.html)
 * stringr
-* tidyr
+* [tidyr](tidyr.html)
 
