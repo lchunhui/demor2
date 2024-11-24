@@ -13,7 +13,7 @@
 
 <meta name="date" content="2024-11-23" />
 
-<title>Tidyverse</title>
+<title>forcats</title>
 
 <script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -31,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -233,6 +236,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -240,6 +306,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -316,7 +392,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Tidyverse</h1>
+<h1 class="title toc-ignore">forcats</h1>
 <h4 class="author">Chun-Hui Lin</h4>
 <h4 class="date">2024-11-23</h4>
 
@@ -351,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span> 0
 </p>
@@ -388,6 +464,90 @@ class="panel-collapse collapse">
 <p>Great! Since the R Markdown file has been committed to the Git
 repository, you know the exact version of the code that produced these
 results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20241122code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20241122)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20241122code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20241122)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -444,8 +604,8 @@ have uncommitted changes.
 <div id="versions" class="tab-pane fade">
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/tidyverse.Rmd</code>) and HTML
-(<code>docs/tidyverse.html</code>) files. If you’ve configured a remote
+made to the R Markdown (<code>analysis/forcats.Rmd</code>) and HTML
+(<code>docs/forcats.html</code>) files. If you’ve configured a remote
 Git repository (see <code>?wflow_git_remote</code>), click on the
 hyperlinks in the table below to view the files as they were in that
 past version.
@@ -477,7 +637,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/lchunhui/demor2/blob/6b5529948aa88c271c8c200ad451d0ba0eb5c440/analysis/tidyverse.Rmd" target="_blank">6b55299</a>
+<a href="https://github.com/lchunhui/demor2/blob/6b5529948aa88c271c8c200ad451d0ba0eb5c440/analysis/forcats.Rmd" target="_blank">6b55299</a>
 </td>
 <td>
 Chun-Hui Lin
@@ -489,57 +649,6 @@ Chun-Hui Lin
 Add forcats- and tidyr-related files.
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/2af34c5c5fdf35a46e0abbc47f9a30644dad81c0/docs/tidyverse.html" target="_blank">2af34c5</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/e5af4dd52bdda87ad5929952b2cbb66597348956/docs/tidyverse.html" target="_blank">e5af4dd</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/lchunhui/demor2/blob/8b888dfc3e14f3be8d63e4d4e143bd68785213be/analysis/tidyverse.Rmd" target="_blank">8b888df</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Add tidyverse-related files.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -547,12 +656,112 @@ Add tidyverse-related files.
 </div>
 </div>
 </div>
-<p>Core:</p>
+<p>Some notes on data wrangling for factors from the <a
+href="https://forcats.tidyverse.org/"><code>forcats</code></a> site
+using <a
+href="https://dplyr.tidyverse.org/reference/starwars.html"><code>starwars</code></a>
+dataset as the example.</p>
+<div id="adddropreverse-levels" class="section level2">
+<h2>Add/Drop/Reverse Levels</h2>
+<pre class="r"><code>fct_expand(factor(c(&quot;a&quot;, &quot;b&quot;), levels = c(&quot;a&quot;, &quot;b&quot;)), &quot;c&quot;)</code></pre>
+<pre><code>[1] a b
+Levels: a b c</code></pre>
+<pre class="r"><code>fct_drop(factor(c(&quot;a&quot;, &quot;b&quot;), levels = c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)))</code></pre>
+<pre><code>[1] a b
+Levels: a b</code></pre>
+<pre class="r"><code>fct_rev(factor(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), levels = c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)))</code></pre>
+<pre><code>[1] a b c
+Levels: c b a</code></pre>
+</div>
+<div id="reorder-levels" class="section level2">
+<h2>Reorder Levels</h2>
 <ul>
-<li><a href="forcats.html">forcats</a></li>
-<li>stringr</li>
-<li><a href="tidyr.html">tidyr</a></li>
+<li><code>fct_infreq()</code>: order level by its frequency.</li>
 </ul>
+<pre class="r"><code>ggplot(starwars, aes(y = fct_infreq(hair_color))) + 
+  geom_bar(fill = &quot;steelblue&quot;, width = 0.75) + 
+  labs(x = &quot;Frequency&quot;, y = &quot;Hair color&quot;) + 
+  theme_bw()</code></pre>
+<p><img src="figure/forcats.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="collapse-levels" class="section level2">
+<h2>Collapse Levels</h2>
+<ul>
+<li><p><code>fct_lump()</code>: collapse infrequent levels into one
+“Other” level.</p>
+<ul>
+<li><code>n=</code> argument: specify positive/negative n to keep
+most/least common n levels.</li>
+<li><code>prop=</code> argument: specify positive % to keep levels with
+at least % frequency.</li>
+<li><code>other_level=</code> argument: rename the lumped “Other”
+level.</li>
+</ul></li>
+</ul>
+<pre class="r"><code>ggplot(starwars, aes(y = fct_infreq(fct_lump(skin_color, n = 5, other_level = &quot;other&quot;)))) + 
+  geom_bar(fill = &quot;steelblue&quot;, width = 0.75) + 
+  labs(x = &quot;Frequency&quot;, y = &quot;Skin color&quot;) + 
+  theme_bw()</code></pre>
+<p><img src="figure/forcats.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="sort-levels" class="section level2">
+<h2>Sort Levels</h2>
+<ul>
+<li><code>fct_reorder()</code>: reorder levels by another variable.</li>
+</ul>
+<pre class="r"><code>ggplot(iris, aes(x = fct_reorder(Species, Sepal.Width), y = Sepal.Width)) +
+  geom_boxplot(fill = &quot;steelblue&quot;, width = 0.75) + 
+  labs(x = &quot;Species&quot;, y = &quot;Sepal width&quot;) +
+  theme_bw()</code></pre>
+<p><img src="figure/forcats.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
+Running under: macOS 15.1.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/Detroit
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] lubridate_1.9.3 stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2    
+ [5] readr_2.1.5     tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1  
+ [9] tidyverse_2.0.0 forcats_1.0.0   workflowr_1.7.1
+
+loaded via a namespace (and not attached):
+ [1] sass_0.4.9        utf8_1.2.4        generics_0.1.3    stringi_1.8.4    
+ [5] hms_1.1.3         digest_0.6.37     magrittr_2.0.3    timechange_0.3.0 
+ [9] evaluate_1.0.0    grid_4.4.0        fastmap_1.2.0     rprojroot_2.0.4  
+[13] jsonlite_1.8.9    processx_3.8.4    whisker_0.4.1     ps_1.7.6         
+[17] promises_1.3.0    httr_1.4.7        fansi_1.0.6       scales_1.3.0     
+[21] jquerylib_0.1.4   cli_3.6.3         rlang_1.1.4       munsell_0.5.1    
+[25] withr_3.0.1       cachem_1.1.0      yaml_2.3.10       tools_4.4.0      
+[29] tzdb_0.4.0        colorspace_2.1-1  httpuv_1.6.15     vctrs_0.6.5      
+[33] R6_2.5.1          lifecycle_1.0.4   git2r_0.33.0      fs_1.6.4         
+[37] pkgconfig_2.0.3   callr_3.7.6       pillar_1.9.0      bslib_0.8.0      
+[41] later_1.3.2       gtable_0.3.5      glue_1.7.0        Rcpp_1.0.13      
+[45] highr_0.11        xfun_0.47         tidyselect_1.2.1  rstudioapi_0.16.0
+[49] knitr_1.48        farver_2.1.2      htmltools_0.5.8.1 labeling_0.4.3   
+[53] rmarkdown_2.28    compiler_4.4.0    getPass_0.2-4    </code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -575,6 +784,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -607,6 +818,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
