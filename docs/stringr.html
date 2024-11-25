@@ -11,9 +11,9 @@
 
 <meta name="author" content="Chun-Hui Lin" />
 
-<meta name="date" content="2024-11-23" />
+<meta name="date" content="2024-11-24" />
 
-<title>Tidyverse</title>
+<title>stringr</title>
 
 <script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -31,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -233,6 +236,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -240,6 +306,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -316,9 +392,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Tidyverse</h1>
+<h1 class="title toc-ignore">stringr</h1>
 <h4 class="author">Chun-Hui Lin</h4>
-<h4 class="date">2024-11-23</h4>
+<h4 class="date">2024-11-24</h4>
 
 </div>
 
@@ -351,7 +427,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span> 0
 </p>
@@ -388,6 +464,90 @@ class="panel-collapse collapse">
 <p>Great! Since the R Markdown file has been committed to the Git
 repository, you know the exact version of the code that produced these
 results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20241122code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20241122)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20241122code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20241122)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -444,8 +604,8 @@ have uncommitted changes.
 <div id="versions" class="tab-pane fade">
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/tidyverse.Rmd</code>) and HTML
-(<code>docs/tidyverse.html</code>) files. If you’ve configured a remote
+made to the R Markdown (<code>analysis/stringr.Rmd</code>) and HTML
+(<code>docs/stringr.html</code>) files. If you’ve configured a remote
 Git repository (see <code>?wflow_git_remote</code>), click on the
 hyperlinks in the table below to view the files as they were in that
 past version.
@@ -477,7 +637,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/lchunhui/demor2/blob/f6c88d10f49219b97198b34b47a2ea57b38be98c/analysis/tidyverse.Rmd" target="_blank">f6c88d1</a>
+<a href="https://github.com/lchunhui/demor2/blob/f6c88d10f49219b97198b34b47a2ea57b38be98c/analysis/stringr.Rmd" target="_blank">f6c88d1</a>
 </td>
 <td>
 Chun-Hui Lin
@@ -489,91 +649,6 @@ Chun-Hui Lin
 Add stringr-related files.
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/04df2c38d4475756269f400429dec3abc8c9258f/docs/tidyverse.html" target="_blank">04df2c3</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-24
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/lchunhui/demor2/blob/6b5529948aa88c271c8c200ad451d0ba0eb5c440/analysis/tidyverse.Rmd" target="_blank">6b55299</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-24
-</td>
-<td>
-Add forcats- and tidyr-related files.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/2af34c5c5fdf35a46e0abbc47f9a30644dad81c0/docs/tidyverse.html" target="_blank">2af34c5</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/e5af4dd52bdda87ad5929952b2cbb66597348956/docs/tidyverse.html" target="_blank">e5af4dd</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/lchunhui/demor2/blob/8b888dfc3e14f3be8d63e4d4e143bd68785213be/analysis/tidyverse.Rmd" target="_blank">8b888df</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Add tidyverse-related files.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -581,12 +656,137 @@ Add tidyverse-related files.
 </div>
 </div>
 </div>
-<p>Core:</p>
+<p>Some notes on data wrangling for strings from the <a
+href="https://stringr.tidyverse.org/">stringr</a> site using <a
+href="https://stringr.tidyverse.org/reference/stringr-data.html"><code>fruit</code></a>
+dataset as the example.</p>
+<div id="string" class="section level2">
+<h2>String</h2>
 <ul>
-<li><a href="forcats.html">forcats</a></li>
-<li><a href="stringr.html">stringr</a></li>
-<li><a href="tidyr.html">tidyr</a></li>
+<li><code>str_sub()</code>: extract substring by specified position</li>
 </ul>
+<pre class="r"><code>str_sub(&quot;catdog&quot;, start = 1, end = 3) # count from the left</code></pre>
+<pre><code>[1] &quot;cat&quot;</code></pre>
+<pre class="r"><code>str_sub(&quot;catdog&quot;, start = -3, end = -1) # count from the right</code></pre>
+<pre><code>[1] &quot;dog&quot;</code></pre>
+<ul>
+<li><code>str_c()</code>: join strings into one.</li>
+</ul>
+<pre class="r"><code>str_c(c(&quot;cat&quot;, &quot;dog&quot;), collapse = &quot;, &quot;) # equivalent to paste()</code></pre>
+<pre><code>[1] &quot;cat, dog&quot;</code></pre>
+</div>
+<div id="pattern" class="section level2">
+<h2>Pattern</h2>
+<ul>
+<li><code>str_detect()</code>: detect specified pattern.</li>
+</ul>
+<pre class="r"><code>str_detect(c(&quot;cat&quot;, &quot;dog&quot;), &quot;[abc]&quot;) # match any single character that is a, b, or c</code></pre>
+<pre><code>[1]  TRUE FALSE</code></pre>
+<ul>
+<li><code>str_split()</code>: split string by specified symbol.</li>
+</ul>
+<pre class="r"><code>str_split(&quot;cat dog&quot;, &quot; &quot;)</code></pre>
+<pre><code>[[1]]
+[1] &quot;cat&quot; &quot;dog&quot;</code></pre>
+</div>
+<div id="regular-expressions" class="section level2">
+<h2>Regular Expressions</h2>
+<ul>
+<li><code>str_subset()</code>: find elements with matching pattern.</li>
+</ul>
+<pre class="r"><code>str_subset(fruit, &quot; &quot;) # find two-word fruits</code></pre>
+<pre><code> [1] &quot;bell pepper&quot;       &quot;blood orange&quot;      &quot;canary melon&quot;     
+ [4] &quot;chili pepper&quot;      &quot;goji berry&quot;        &quot;kiwi fruit&quot;       
+ [7] &quot;purple mangosteen&quot; &quot;rock melon&quot;        &quot;salal berry&quot;      
+[10] &quot;star fruit&quot;        &quot;ugli fruit&quot;       </code></pre>
+<pre class="r"><code>str_subset(fruit, &quot;^a&quot;) # find fruits starting with &quot;a&quot;</code></pre>
+<pre><code>[1] &quot;apple&quot;   &quot;apricot&quot; &quot;avocado&quot;</code></pre>
+<pre class="r"><code>str_subset(fruit, &quot;a$&quot;) # find fruits ending with &quot;a&quot;</code></pre>
+<pre><code>[1] &quot;banana&quot;    &quot;cherimoya&quot; &quot;feijoa&quot;    &quot;guava&quot;     &quot;papaya&quot;    &quot;satsuma&quot;  </code></pre>
+<pre class="r"><code>str_subset(fruit, &quot;^[aeiou]&quot;) # find fruits with starting with a vowel</code></pre>
+<pre><code>[1] &quot;apple&quot;      &quot;apricot&quot;    &quot;avocado&quot;    &quot;eggplant&quot;   &quot;elderberry&quot;
+[6] &quot;olive&quot;      &quot;orange&quot;     &quot;ugli fruit&quot;</code></pre>
+<pre class="r"><code>str_subset(fruit, &quot;[aeiou]{2}&quot;) # find fruits with two consecutive vowels</code></pre>
+<pre><code> [1] &quot;blood orange&quot;      &quot;blueberry&quot;         &quot;breadfruit&quot;       
+ [4] &quot;cantaloupe&quot;        &quot;cloudberry&quot;        &quot;dragonfruit&quot;      
+ [7] &quot;durian&quot;            &quot;feijoa&quot;            &quot;gooseberry&quot;       
+[10] &quot;grapefruit&quot;        &quot;guava&quot;             &quot;jackfruit&quot;        
+[13] &quot;kiwi fruit&quot;        &quot;kumquat&quot;           &quot;loquat&quot;           
+[16] &quot;lychee&quot;            &quot;passionfruit&quot;      &quot;peach&quot;            
+[19] &quot;pear&quot;              &quot;pineapple&quot;         &quot;purple mangosteen&quot;
+[22] &quot;quince&quot;            &quot;raisin&quot;            &quot;star fruit&quot;       
+[25] &quot;ugli fruit&quot;       </code></pre>
+<pre class="r"><code># find fruits ending with two consecutive consonants other than r
+str_subset(fruit, &quot;[^aeiour]{2}$&quot;)</code></pre>
+<pre><code>[1] &quot;blackcurrant&quot; &quot;currant&quot;      &quot;eggplant&quot;     &quot;peach&quot;        &quot;redcurrant&quot;  </code></pre>
+<pre class="r"><code># find fruits with two consecutive vowels twice, separated by one or more consants
+str_subset(fruit, &quot;[aeiou]{2}.+[aeiou]{2}&quot;)</code></pre>
+<pre><code>[1] &quot;breadfruit&quot;   &quot;feijoa&quot;       &quot;passionfruit&quot;</code></pre>
+<pre class="r"><code># find fruits with extactly three consectutive consonants in the middle of two vowels
+str_subset(fruit, &quot;[aeiou][^aeiou ]{3}[aeiou]&quot;)</code></pre>
+<pre><code> [1] &quot;apple&quot;             &quot;blackberry&quot;        &quot;blackcurrant&quot;     
+ [4] &quot;breadfruit&quot;        &quot;dragonfruit&quot;       &quot;huckleberry&quot;      
+ [7] &quot;passionfruit&quot;      &quot;pineapple&quot;         &quot;purple mangosteen&quot;
+[10] &quot;raspberry&quot;        </code></pre>
+<pre class="r"><code>## find fruits with a repeated letter
+str_subset(fruit, &quot;(.)\\1&quot;)</code></pre>
+<pre><code> [1] &quot;apple&quot;             &quot;bell pepper&quot;       &quot;bilberry&quot;         
+ [4] &quot;blackberry&quot;        &quot;blackcurrant&quot;      &quot;blood orange&quot;     
+ [7] &quot;blueberry&quot;         &quot;boysenberry&quot;       &quot;cherry&quot;           
+[10] &quot;chili pepper&quot;      &quot;cloudberry&quot;        &quot;cranberry&quot;        
+[13] &quot;currant&quot;           &quot;eggplant&quot;          &quot;elderberry&quot;       
+[16] &quot;goji berry&quot;        &quot;gooseberry&quot;        &quot;huckleberry&quot;      
+[19] &quot;lychee&quot;            &quot;mulberry&quot;          &quot;passionfruit&quot;     
+[22] &quot;persimmon&quot;         &quot;pineapple&quot;         &quot;purple mangosteen&quot;
+[25] &quot;raspberry&quot;         &quot;redcurrant&quot;        &quot;salal berry&quot;      
+[28] &quot;strawberry&quot;        &quot;tamarillo&quot;        </code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
+Running under: macOS 15.1.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/Detroit
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] lubridate_1.9.3 forcats_1.0.0   dplyr_1.1.4     purrr_1.0.2    
+ [5] readr_2.1.5     tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1  
+ [9] tidyverse_2.0.0 stringr_1.5.1   workflowr_1.7.1
+
+loaded via a namespace (and not attached):
+ [1] sass_0.4.9        utf8_1.2.4        generics_0.1.3    stringi_1.8.4    
+ [5] hms_1.1.3         digest_0.6.37     magrittr_2.0.3    timechange_0.3.0 
+ [9] evaluate_1.0.0    grid_4.4.0        fastmap_1.2.0     rprojroot_2.0.4  
+[13] jsonlite_1.8.9    processx_3.8.4    whisker_0.4.1     ps_1.7.6         
+[17] promises_1.3.0    httr_1.4.7        fansi_1.0.6       scales_1.3.0     
+[21] jquerylib_0.1.4   cli_3.6.3         rlang_1.1.4       munsell_0.5.1    
+[25] withr_3.0.1       cachem_1.1.0      yaml_2.3.10       tools_4.4.0      
+[29] tzdb_0.4.0        colorspace_2.1-1  httpuv_1.6.15     vctrs_0.6.5      
+[33] R6_2.5.1          lifecycle_1.0.4   git2r_0.33.0      fs_1.6.4         
+[37] pkgconfig_2.0.3   callr_3.7.6       pillar_1.9.0      bslib_0.8.0      
+[41] later_1.3.2       gtable_0.3.5      glue_1.7.0        Rcpp_1.0.13      
+[45] xfun_0.47         tidyselect_1.2.1  rstudioapi_0.16.0 knitr_1.48       
+[49] htmltools_0.5.8.1 rmarkdown_2.28    compiler_4.4.0    getPass_0.2-4    </code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -609,6 +809,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -641,6 +843,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
