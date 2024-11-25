@@ -1,0 +1,68 @@
+---
+title: "stringr"
+author: "Chun-Hui Lin"
+date: "2024-11-24"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on data wrangling for strings from the [stringr](https://stringr.tidyverse.org/) site using [`fruit`](https://stringr.tidyverse.org/reference/stringr-data.html) dataset as the example.
+
+```{r, echo=FALSE, message=FALSE}
+# install.packages('stringr')
+library(stringr); library(tidyverse)
+```
+
+## String
+
+* `str_sub()`: extract substring by specified position
+
+```{r}
+str_sub("catdog", start = 1, end = 3) # count from the left
+str_sub("catdog", start = -3, end = -1) # count from the right
+```
+
+* `str_c()`: join strings into one.
+
+```{r}
+str_c(c("cat", "dog"), collapse = ", ") # equivalent to paste()
+```
+
+## Pattern
+
+* `str_detect()`: detect specified pattern.
+
+```{r}
+str_detect(c("cat", "dog"), "[abc]") # match any single character that is a, b, or c
+```
+
+* `str_split()`: split string by specified symbol.
+
+```{r}
+str_split("cat dog", " ")
+```
+
+## Regular Expressions
+
+* `str_subset()`: find elements with matching pattern.
+
+```{r}
+str_subset(fruit, " ") # find two-word fruits
+str_subset(fruit, "^a") # find fruits starting with "a"
+str_subset(fruit, "a$") # find fruits ending with "a"
+str_subset(fruit, "^[aeiou]") # find fruits with starting with a vowel
+str_subset(fruit, "[aeiou]{2}") # find fruits with two consecutive vowels
+
+# find fruits ending with two consecutive consonants other than r
+str_subset(fruit, "[^aeiour]{2}$")
+
+# find fruits with two consecutive vowels twice, separated by one or more consants
+str_subset(fruit, "[aeiou]{2}.+[aeiou]{2}")
+
+# find fruits with extactly three consectutive consonants in the middle of two vowels
+str_subset(fruit, "[aeiou][^aeiou ]{3}[aeiou]")
+
+## find fruits with a repeated letter
+str_subset(fruit, "(.)\\1")
+```
