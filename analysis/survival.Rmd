@@ -29,7 +29,7 @@ library(survival); library(survminer); library(gtsummary)
 #### Median Survival
 
 ```{r}
-survfit(Surv(time, status) ~ sex, lung) %>%
+survfit(Surv(time, status == 2) ~ sex, lung) %>%
   tbl_survfit(prob = 0.5,
               label = sex ~ 'Sex',
               label_header = "**Median Survival (days)**") %>%
@@ -38,6 +38,19 @@ survfit(Surv(time, status) ~ sex, lung) %>%
   bold_labels()
 ```
 
+#### Median [Follow-up](https://www.bioinfo-scrounger.com/archives/follow_up_time)
+
+The event of interest is loss-of-follow-up in this case so we utilized KM method with **reversed** status indicator. 
+
+```{r}
+survfit(Surv(time, status == 1) ~ sex, lung) %>%
+  tbl_survfit(prob = 0.5,
+              label = sex ~ 'Sex',
+              label_header = "**Median Follow-up (days)**") %>%
+  add_p() %>% # equivalent: survdiff()
+  modify_header(label ~ "") %>%
+  bold_labels()
+```
 
 #### 1-year Survival
 
