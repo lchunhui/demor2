@@ -16,10 +16,13 @@ minute (**m**) and second (**s**) elements in your variable and apply the corres
 
   * `%--%` operator: equivalent to `difftime()`, such as `as.duration(start.date %--% end.date)/dyears(x = 1)`.
   
-* Time-to-event outcomes: if the covariate violates the proportional hazards assumption, consider adding time interaction or stratifying by itself in the model.
+* Time-to-event outcomes: Cox PH regression; if the covariate violates the proportional hazards assumption, consider adding time interaction or stratifying by itself in the model.
 
-```{r, echo=F, message=F}
+  * If subjexts have more than one possible events, conduct competing risks regression instead.
+
+```{r, echo=F, message=F, warning=F}
 library(survival); library(survminer); library(gtsummary)
+library(MASS); library(cmprsk); library(tidycmprsk); library(ggsurvfit)
 ```
 
 ## Kaplan-Meier Method
@@ -38,16 +41,16 @@ survfit(Surv(time, status == 2) ~ sex, lung) %>%
   bold_labels()
 ```
 
-#### Median [Follow-up](https://www.bioinfo-scrounger.com/archives/follow_up_time)
+#### Median Follow-up
 
-The event of interest is loss-of-follow-up in this case so we utilized KM method with **reversed** status indicator. 
+The event of interest is loss-of-follow-up (censored) so we utilized KM method with **reversed** status indicator. 
 
 ```{r}
 survfit(Surv(time, status == 1) ~ sex, lung) %>%
   tbl_survfit(prob = 0.5,
               label = sex ~ 'Sex',
               label_header = "**Median Follow-up (days)**") %>%
-  add_p() %>% # equivalent: survdiff()
+  add_p() %>%
   modify_header(label ~ "") %>%
   bold_labels()
 ```
@@ -58,8 +61,9 @@ survfit(Surv(time, status == 1) ~ sex, lung) %>%
 survfit(Surv(time, status) ~ sex, lung) %>%
   tbl_survfit(times = 365.25, # speify 1-year probability
               label = sex ~ 'Sex',
-              label_header = "**1-year Survival (%)**", # specify column label
+              label_header = "**1-year Survival (%)**",
               estimate_fun = ~ style_percent(.x, digits = 1)) %>%
+  add_p() %>%
   modify_header(label ~ "") %>%
   bold_labels()
 ```
@@ -91,7 +95,7 @@ pairwise_survdiff(Surv(ttdeath, death) ~ grade, trial)
 
 ## Cox PH Regression
 
-### gtsummary::tbl_regression
+### gtsummary::tbl_regression()
 
 ```{r}
 tbl_regression(coxph(Surv(ttdeath, death) ~ trt + age + grade, trial),
@@ -111,10 +115,43 @@ cox.zph(coxph(Surv(ttdeath, death) ~ trt + age + grade, trial))
 
 * `ggforest()`
 
-  * `refLabel=` argument: customize label for reference levels.
+* `refLabel=` argument: customize label for reference levels.
 
 ```{r, warning=F}
 # visualize model by forest plot
 ggforest(coxph(Surv(ttdeath, death) ~ trt + age + grade, as.data.frame(trial)),
          refLabel = '--')
+```
+
+## Competing Risks Regression
+
+### cmprsk::cuminc()
+
+```{r}
+cuminc(Surv(ttdeath, death_cr) ~ trt, trial) %>% 
+  tbl_cuminc(
+    times = 12, 
+    label_header = "**{time/12}-year Cumulative Incidence**",
+    estimate_fun = ~ style_percent(.x, digits = 1)) %>% 
+  add_p() %>%
+  modify_header(label ~ "") %>%
+  bold_labels()
+```
+
+### ggsurvfit::ggcuminc()
+
+```{r}
+ggcuminc(cuminc(Surv(ttdeath, death_cr) ~ trt, trial)) +
+  add_confidence_interval() + 
+  add_risktable() + 
+  scale_ggsurvfit(x_scales = list(breaks = seq(0, 24, 6)))
+```
+
+### cmprsk::crr()
+
+```{r}
+tbl_regression(crr(Surv(ttdeath, death_cr) ~ trt + age, trial), 
+               exponentiate = T,
+               estimate_fun = ~ style_ratio(.x, digits = 2),
+               pvalue_fun = ~ style_pvalue(.x, digits = 2))
 ```
