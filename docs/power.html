@@ -11,9 +11,9 @@
 
 <meta name="author" content="Chun-Hui Lin" />
 
-<meta name="date" content="2024-11-24" />
+<meta name="date" content="2024-12-03" />
 
-<title>stringr</title>
+<title>Power Analysis</title>
 
 <script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -395,9 +395,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">stringr</h1>
+<h1 class="title toc-ignore">Power Analysis</h1>
 <h4 class="author">Chun-Hui Lin</h4>
-<h4 class="date">2024-11-24</h4>
+<h4 class="date">2024-12-03</h4>
 
 </div>
 
@@ -607,11 +607,10 @@ have uncommitted changes.
 <div id="versions" class="tab-pane fade">
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/stringr.Rmd</code>) and HTML
-(<code>docs/stringr.html</code>) files. If you’ve configured a remote
-Git repository (see <code>?wflow_git_remote</code>), click on the
-hyperlinks in the table below to view the files as they were in that
-past version.
+made to the R Markdown (<code>analysis/power.Rmd</code>) and HTML
+(<code>docs/power.html</code>) files. If you’ve configured a remote Git
+repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
+in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -637,36 +636,19 @@ Message
 <tbody>
 <tr>
 <td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/7a1c884bb76a0dfeeaf6ce88ae80f4e4b1e3e583/docs/stringr.html" target="_blank">7a1c884</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-25
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
 Rmd
 </td>
 <td>
-<a href="https://github.com/lchunhui/demor2/blob/f6c88d10f49219b97198b34b47a2ea57b38be98c/analysis/stringr.Rmd" target="_blank">f6c88d1</a>
+<a href="https://github.com/lchunhui/demor2/blob/57763877a74ed5da94f79bf4e243b38e19563694/analysis/power.Rmd" target="_blank">5776387</a>
 </td>
 <td>
 Chun-Hui Lin
 </td>
 <td>
-2024-11-25
+2024-12-03
 </td>
 <td>
-Add stringr-related files.
+Add power-related files.
 </td>
 </tr>
 </tbody>
@@ -676,90 +658,60 @@ Add stringr-related files.
 </div>
 </div>
 </div>
-<p>Some notes on data wrangling for strings from the <a
-href="https://stringr.tidyverse.org/">stringr</a> site using <a
-href="https://stringr.tidyverse.org/reference/stringr-data.html"><code>fruit</code></a>
-dataset as the example.</p>
-<div id="string" class="section level2">
-<h2>String</h2>
+<p>Some notes on power/sample size calculation from the <a
+href="https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html">pwr</a>
+tutorial and prior experience. Before jumping into the calculation,
+things-to-do are listed in the following:</p>
 <ul>
-<li><code>str_sub()</code>: extract substring by specified position</li>
+<li>Exposure and outcome type/distribution: to determine which test to
+use.</li>
+<li>Power and significance level (<span
+class="math inline">\(\alpha\)</span>): usually apply
+<strong>80%</strong> and <strong>0.05</strong> as the setup.</li>
+<li>For power calculation, number of samples collected per group is
+necessary.</li>
+<li>For sample size calculation, effect size (<span
+class="math inline">\(|\mu_1 - \mu_2|/\sigma\)</span>) or its components
+are necessary. You can either make assumption of it or obtain estimates
+from dataset or literature review.</li>
 </ul>
-<pre class="r"><code>str_sub(&quot;catdog&quot;, start = 1, end = 3) # count from the left</code></pre>
-<pre><code>[1] &quot;cat&quot;</code></pre>
-<pre class="r"><code>str_sub(&quot;catdog&quot;, start = -3, end = -1) # count from the right</code></pre>
-<pre><code>[1] &quot;dog&quot;</code></pre>
-<ul>
-<li><code>str_c()</code>: join strings into one.</li>
-</ul>
-<pre class="r"><code>str_c(c(&quot;cat&quot;, &quot;dog&quot;), collapse = &quot;, &quot;) # equivalent to paste()</code></pre>
-<pre><code>[1] &quot;cat, dog&quot;</code></pre>
+<div id="two-sample-t-test" class="section level2">
+<h2>Two-sample t-test</h2>
+<div id="pwrpwr.t.est" class="section level3">
+<h3>pwr::pwr.t.est</h3>
+<p>Assuming an effect size of 1, we’ll need at least 17 subjects in each
+group to detect the difference with at least 80% power using <span
+class="math inline">\(\alpha\)</span>=0.05 and two-sided testing.</p>
+<pre class="r"><code># assume same sizes per group
+pwr.t.test(d = 1, power = 0.8)</code></pre>
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 16.71472
+              d = 1
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
 </div>
-<div id="pattern" class="section level2">
-<h2>Pattern</h2>
-<ul>
-<li><code>str_detect()</code>: detect specified pattern.</li>
-</ul>
-<pre class="r"><code>str_detect(c(&quot;cat&quot;, &quot;dog&quot;), &quot;[abc]&quot;) # match any single character that is a, b, or c</code></pre>
-<pre><code>[1]  TRUE FALSE</code></pre>
-<ul>
-<li><code>str_split()</code>: split string by specified symbol.</li>
-</ul>
-<pre class="r"><code>str_split(&quot;cat dog&quot;, &quot; &quot;)</code></pre>
-<pre><code>[[1]]
-[1] &quot;cat&quot; &quot;dog&quot;</code></pre>
-</div>
-<div id="regular-expressions" class="section level2">
-<h2>Regular Expressions</h2>
-<ul>
-<li><code>str_subset()</code>: find elements with matching pattern.</li>
-</ul>
-<pre class="r"><code>str_subset(fruit, &quot; &quot;) # find two-word fruits</code></pre>
-<pre><code> [1] &quot;bell pepper&quot;       &quot;blood orange&quot;      &quot;canary melon&quot;     
- [4] &quot;chili pepper&quot;      &quot;goji berry&quot;        &quot;kiwi fruit&quot;       
- [7] &quot;purple mangosteen&quot; &quot;rock melon&quot;        &quot;salal berry&quot;      
-[10] &quot;star fruit&quot;        &quot;ugli fruit&quot;       </code></pre>
-<pre class="r"><code>str_subset(fruit, &quot;^a&quot;) # find fruits starting with &quot;a&quot;</code></pre>
-<pre><code>[1] &quot;apple&quot;   &quot;apricot&quot; &quot;avocado&quot;</code></pre>
-<pre class="r"><code>str_subset(fruit, &quot;a$&quot;) # find fruits ending with &quot;a&quot;</code></pre>
-<pre><code>[1] &quot;banana&quot;    &quot;cherimoya&quot; &quot;feijoa&quot;    &quot;guava&quot;     &quot;papaya&quot;    &quot;satsuma&quot;  </code></pre>
-<pre class="r"><code>str_subset(fruit, &quot;^[aeiou]&quot;) # find fruits with starting with a vowel</code></pre>
-<pre><code>[1] &quot;apple&quot;      &quot;apricot&quot;    &quot;avocado&quot;    &quot;eggplant&quot;   &quot;elderberry&quot;
-[6] &quot;olive&quot;      &quot;orange&quot;     &quot;ugli fruit&quot;</code></pre>
-<pre class="r"><code>str_subset(fruit, &quot;[aeiou]{2}&quot;) # find fruits with two consecutive vowels</code></pre>
-<pre><code> [1] &quot;blood orange&quot;      &quot;blueberry&quot;         &quot;breadfruit&quot;       
- [4] &quot;cantaloupe&quot;        &quot;cloudberry&quot;        &quot;dragonfruit&quot;      
- [7] &quot;durian&quot;            &quot;feijoa&quot;            &quot;gooseberry&quot;       
-[10] &quot;grapefruit&quot;        &quot;guava&quot;             &quot;jackfruit&quot;        
-[13] &quot;kiwi fruit&quot;        &quot;kumquat&quot;           &quot;loquat&quot;           
-[16] &quot;lychee&quot;            &quot;passionfruit&quot;      &quot;peach&quot;            
-[19] &quot;pear&quot;              &quot;pineapple&quot;         &quot;purple mangosteen&quot;
-[22] &quot;quince&quot;            &quot;raisin&quot;            &quot;star fruit&quot;       
-[25] &quot;ugli fruit&quot;       </code></pre>
-<pre class="r"><code># find fruits ending with two consecutive consonants other than r
-str_subset(fruit, &quot;[^aeiour]{2}$&quot;)</code></pre>
-<pre><code>[1] &quot;blackcurrant&quot; &quot;currant&quot;      &quot;eggplant&quot;     &quot;peach&quot;        &quot;redcurrant&quot;  </code></pre>
-<pre class="r"><code># find fruits with two consecutive vowels twice, separated by one or more consants
-str_subset(fruit, &quot;[aeiou]{2}.+[aeiou]{2}&quot;)</code></pre>
-<pre><code>[1] &quot;breadfruit&quot;   &quot;feijoa&quot;       &quot;passionfruit&quot;</code></pre>
-<pre class="r"><code># find fruits with extactly three consectutive consonants in the middle of two vowels
-str_subset(fruit, &quot;[aeiou][^aeiou ]{3}[aeiou]&quot;)</code></pre>
-<pre><code> [1] &quot;apple&quot;             &quot;blackberry&quot;        &quot;blackcurrant&quot;     
- [4] &quot;breadfruit&quot;        &quot;dragonfruit&quot;       &quot;huckleberry&quot;      
- [7] &quot;passionfruit&quot;      &quot;pineapple&quot;         &quot;purple mangosteen&quot;
-[10] &quot;raspberry&quot;        </code></pre>
-<pre class="r"><code>## find fruits with a repeated letter
-str_subset(fruit, &quot;(.)\\1&quot;)</code></pre>
-<pre><code> [1] &quot;apple&quot;             &quot;bell pepper&quot;       &quot;bilberry&quot;         
- [4] &quot;blackberry&quot;        &quot;blackcurrant&quot;      &quot;blood orange&quot;     
- [7] &quot;blueberry&quot;         &quot;boysenberry&quot;       &quot;cherry&quot;           
-[10] &quot;chili pepper&quot;      &quot;cloudberry&quot;        &quot;cranberry&quot;        
-[13] &quot;currant&quot;           &quot;eggplant&quot;          &quot;elderberry&quot;       
-[16] &quot;goji berry&quot;        &quot;gooseberry&quot;        &quot;huckleberry&quot;      
-[19] &quot;lychee&quot;            &quot;mulberry&quot;          &quot;passionfruit&quot;     
-[22] &quot;persimmon&quot;         &quot;pineapple&quot;         &quot;purple mangosteen&quot;
-[25] &quot;raspberry&quot;         &quot;redcurrant&quot;        &quot;salal berry&quot;      
-[28] &quot;strawberry&quot;        &quot;tamarillo&quot;        </code></pre>
+<div id="pwrpwr.t2n.test" class="section level3">
+<h3>pwr::pwr.t2n.test</h3>
+<p>When the sample sizes in the two groups are 198 and 37 respectively,
+we are able to detect a mean difference of 9.029, assuming the common
+standard deviation is 17.92, with at least 80% power using <span
+class="math inline">\(\alpha\)</span>=0.05 and two-sided testing.</p>
+<pre class="r"><code># assume different sizes per group
+pwr.t2n.test(n1 = 198, n2 = 37, power = 0.8)</code></pre>
+<pre><code>
+     t test power calculation 
+
+             n1 = 198
+             n2 = 37
+              d = 0.5038656
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -787,24 +739,21 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] lubridate_1.9.3 forcats_1.0.0   dplyr_1.1.4     purrr_1.0.2    
- [5] readr_2.1.5     tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1  
- [9] tidyverse_2.0.0 stringr_1.5.1   workflowr_1.7.1
+[1] pwr_1.3-0       workflowr_1.7.1
 
 loaded via a namespace (and not attached):
- [1] sass_0.4.9        utf8_1.2.4        generics_0.1.3    stringi_1.8.4    
- [5] hms_1.1.3         digest_0.6.37     magrittr_2.0.3    timechange_0.3.0 
- [9] evaluate_1.0.0    grid_4.4.0        fastmap_1.2.0     rprojroot_2.0.4  
-[13] jsonlite_1.8.9    processx_3.8.4    whisker_0.4.1     ps_1.7.6         
-[17] promises_1.3.0    httr_1.4.7        fansi_1.0.6       scales_1.3.0     
-[21] jquerylib_0.1.4   cli_3.6.3         rlang_1.1.4       munsell_0.5.1    
-[25] withr_3.0.1       cachem_1.1.0      yaml_2.3.10       tools_4.4.0      
-[29] tzdb_0.4.0        colorspace_2.1-1  httpuv_1.6.15     vctrs_0.6.5      
-[33] R6_2.5.1          lifecycle_1.0.4   git2r_0.33.0      fs_1.6.4         
-[37] pkgconfig_2.0.3   callr_3.7.6       pillar_1.9.0      bslib_0.8.0      
-[41] later_1.3.2       gtable_0.3.5      glue_1.8.0        Rcpp_1.0.13      
-[45] xfun_0.47         tidyselect_1.2.1  rstudioapi_0.16.0 knitr_1.48       
-[49] htmltools_0.5.8.1 rmarkdown_2.28    compiler_4.4.0    getPass_0.2-4    </code></pre>
+ [1] jsonlite_1.8.9    compiler_4.4.0    promises_1.3.0    Rcpp_1.0.13      
+ [5] stringr_1.5.1     git2r_0.33.0      callr_3.7.6       later_1.3.2      
+ [9] jquerylib_0.1.4   yaml_2.3.10       fastmap_1.2.0     R6_2.5.1         
+[13] knitr_1.48        tibble_3.2.1      rprojroot_2.0.4   bslib_0.8.0      
+[17] pillar_1.9.0      rlang_1.1.4       utf8_1.2.4        cachem_1.1.0     
+[21] stringi_1.8.4     httpuv_1.6.15     xfun_0.47         getPass_0.2-4    
+[25] fs_1.6.4          sass_0.4.9        cli_3.6.3         magrittr_2.0.3   
+[29] ps_1.7.6          digest_0.6.37     processx_3.8.4    rstudioapi_0.16.0
+[33] lifecycle_1.0.4   vctrs_0.6.5       evaluate_1.0.0    glue_1.8.0       
+[37] whisker_0.4.1     fansi_1.0.6       rmarkdown_2.28    httr_1.4.7       
+[41] tools_4.4.0       pkgconfig_2.0.3   htmltools_0.5.8.1</code></pre>
+</div>
 </div>
 </div>
 </div>
