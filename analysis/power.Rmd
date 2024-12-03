@@ -1,0 +1,42 @@
+---
+title: "Power Analysis"
+author: "Chun-Hui Lin"
+date: "2024-12-03"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on power/sample size calculation from the [pwr](https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html) tutorial and prior experience. Before jumping into the calculation, things-to-do are listed in the following: 
+
+* Exposure and outcome type/distribution: to determine which test to use.
+* Power and significance level ($\alpha$): usually apply **80%** and **0.05** as the setup.
+* For power calculation, number of samples collected per group is necessary. 
+* For sample size calculation, effect size ($|\mu_1 - \mu_2|/\sigma$) or its components are necessary. You can either make assumption of it or obtain estimates from dataset or literature review. 
+
+```{r, echo=FALSE}
+# install.packages('pwr')
+library(pwr)
+```
+
+## Two-sample t-test
+
+### pwr::pwr.t.est
+
+Assuming an effect size of 1, we’ll need at least 17 subjects in each group to detect the difference with at least 80% power using $\alpha$=0.05 and two-sided testing.
+
+```{r}
+# assume same sizes per group
+pwr.t.test(d = 1, power = 0.8)
+```
+
+### pwr::pwr.t2n.test
+
+When the sample sizes in the two groups are 198 and 37 respectively, we are able to detect a mean difference of 9.029, assuming the common standard deviation is 17.92, with at least 80% power using $\alpha$=0.05 and two-sided testing.
+
+```{r}
+# assume different sizes per group
+pwr.t2n.test(n1 = 198, n2 = 37, power = 0.8)
+```
+
+

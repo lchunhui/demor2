@@ -13,6 +13,8 @@ navbar:
       href: regression.html
     - text: Survival Analysis
       href: survival.html
+    - text: Power Analysis
+      href: power.html
   - text: Packages
     menu:
     - text: tidyverse

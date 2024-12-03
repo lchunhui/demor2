@@ -1,5 +1,5 @@
 ---
-title: "survival"
+title: "Survival Analysis"
 author: "Chun-Hui Lin"
 date: "2024-11-22"
 output: workflowr::wflow_html
@@ -115,7 +115,7 @@ cox.zph(coxph(Surv(ttdeath, death) ~ trt + age + grade, trial))
 
 * `ggforest()`
 
-* `refLabel=` argument: customize label for reference levels.
+  * `refLabel=` argument: customize label for reference levels.
 
 ```{r, warning=F}
 # visualize model by forest plot

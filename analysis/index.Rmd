@@ -15,6 +15,7 @@ Topics:
 * [Table 1](table1.html)
 * [Regression](regression.html)
 * [Survival Analysis](survival.html)
+* [Power Analysis](power.html)
 
 R Packages: 
 
