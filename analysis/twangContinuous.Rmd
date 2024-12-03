@@ -38,7 +38,7 @@ pswt = ps.cont(tss_0 ~ sfs8p_0 + sati_0 + sp_sm_0 + recov_0 + subsgrps_n + treat
 
 The plot showed the balance measure as a function of the number of iterations in the GBR algorithm. Model balance reached optimal around 350-ish iteration.
 
-```{r iteration-plot}
+```{r}
 plot(pswt, plots = "optimize") # visualize the iteration process
 ```
 
@@ -50,7 +50,7 @@ summary(pswt)
 
 Correlations between the exposure and potential confounders were all reduced to below 0.05 in the weighted data.
 
-```{r corr-plot}
+```{r}
 bal.table(pswt, digits = 3)
 plot(pswt, plots = "es") # visualize the balance table
 ```

@@ -21,7 +21,7 @@ library(pwr)
 
 ## Two-sample t-test
 
-### pwr::pwr.t.est
+### pwr::pwr.t.test
 
 Assuming an effect size of 1, we’ll need at least 17 subjects in each group to detect the difference with at least 80% power using $\alpha$=0.05 and two-sided testing.
 
@@ -39,4 +39,9 @@ When the sample sizes in the two groups are 198 and 37 respectively, we are able
 pwr.t2n.test(n1 = 198, n2 = 37, power = 0.8)
 ```
 
+## Chi-squared test
+
+### nQuery::PTT0PU-1
+
+`pwr.2p2n.test` is not applicable since we assume certain proportion of group 1 based on literature review. Assuming that roughly 35% of group 1 will develop the outcome, with the observed samples sizes, we are able to detect a difference in proportions of 9.3% (35% in group 1 vs. 44.3% in group 2) with 80% power using $\alpha$=0.05 and two-sided testing, based on the chi-squared test.
 
