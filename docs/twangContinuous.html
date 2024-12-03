@@ -557,15 +557,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree57763877a74ed5da94f79bf4e243b38e19563694targetblank5776387a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree3cd7a719cadc36638475079a9213b6022b71f9b5targetblank3cd7a71a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/lchunhui/demor2/tree/57763877a74ed5da94f79bf4e243b38e19563694" target="_blank">5776387</a>
+<a href="https://github.com/lchunhui/demor2/tree/3cd7a719cadc36638475079a9213b6022b71f9b5" target="_blank">3cd7a71</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree57763877a74ed5da94f79bf4e243b38e19563694targetblank5776387a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree3cd7a719cadc36638475079a9213b6022b71f9b5targetblank3cd7a71a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -575,7 +575,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/lchunhui/demor2/tree/57763877a74ed5da94f79bf4e243b38e19563694" target="_blank">5776387</a>.
+<a href="https://github.com/lchunhui/demor2/tree/3cd7a719cadc36638475079a9213b6022b71f9b5" target="_blank">3cd7a71</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -635,6 +635,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lchunhui/demor2/blob/3cd7a719cadc36638475079a9213b6022b71f9b5/analysis/twangContinuous.Rmd" target="_blank">3cd7a71</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2024-12-03
+</td>
+<td>
+Update power page (chi-squared test).
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lchunhui/demor2/8d0c926169f4fe59aecbb4b523314ef8a10c6a1c/docs/twangContinuous.html" target="_blank">8d0c926</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2024-12-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -723,44 +757,7 @@ pswt = ps.cont(tss_0 ~ sfs8p_0 + sati_0 + sp_sm_0 + recov_0 + subsgrps_n + treat
 iterations in the GBR algorithm. Model balance reached optimal around
 350-ish iteration.</p>
 <pre class="r"><code>plot(pswt, plots = &quot;optimize&quot;) # visualize the iteration process</code></pre>
-<p><img src="figure/twangContinuous.Rmd/iteration-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-iteration-plot-1">
-Past versions of iteration-plot-1.png
-</button>
-</p>
-<div id="fig-iteration-plot-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/lchunhui/demor2/blob/2af34c5c5fdf35a46e0abbc47f9a30644dad81c0/docs/figure/twangContinuous.Rmd/iteration-plot-1.png" target="_blank">2af34c5</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/twangContinuous.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The average absolute correlation <code>mean.wcor</code> was minimized
 at iteration <code>iter</code> 347, which means the specified
 <code>n.trees</code> allowed GBR to explore sufficiently complicated
@@ -781,44 +778,7 @@ subsgrps_n  0.035 -0.047
 treatA      0.053  0.016
 treatB     -0.053 -0.016</code></pre>
 <pre class="r"><code>plot(pswt, plots = &quot;es&quot;) # visualize the balance table</code></pre>
-<p><img src="figure/twangContinuous.Rmd/corr-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-corr-plot-1">
-Past versions of corr-plot-1.png
-</button>
-</p>
-<div id="fig-corr-plot-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/lchunhui/demor2/blob/2af34c5c5fdf35a46e0abbc47f9a30644dad81c0/docs/figure/twangContinuous.Rmd/corr-plot-1.png" target="_blank">2af34c5</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/twangContinuous.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="causal-effect" class="section level2">
 <h2>Causal Effect</h2>

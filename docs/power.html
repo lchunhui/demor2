@@ -557,15 +557,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree57763877a74ed5da94f79bf4e243b38e19563694targetblank5776387a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree3cd7a719cadc36638475079a9213b6022b71f9b5targetblank3cd7a71a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/lchunhui/demor2/tree/57763877a74ed5da94f79bf4e243b38e19563694" target="_blank">5776387</a>
+<a href="https://github.com/lchunhui/demor2/tree/3cd7a719cadc36638475079a9213b6022b71f9b5" target="_blank">3cd7a71</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree57763877a74ed5da94f79bf4e243b38e19563694targetblank5776387a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree3cd7a719cadc36638475079a9213b6022b71f9b5targetblank3cd7a71a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -575,7 +575,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/lchunhui/demor2/tree/57763877a74ed5da94f79bf4e243b38e19563694" target="_blank">5776387</a>.
+<a href="https://github.com/lchunhui/demor2/tree/3cd7a719cadc36638475079a9213b6022b71f9b5" target="_blank">3cd7a71</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -639,6 +639,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/lchunhui/demor2/blob/3cd7a719cadc36638475079a9213b6022b71f9b5/analysis/power.Rmd" target="_blank">3cd7a71</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2024-12-03
+</td>
+<td>
+Update power page (chi-squared test).
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lchunhui/demor2/8d0c926169f4fe59aecbb4b523314ef8a10c6a1c/docs/power.html" target="_blank">8d0c926</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2024-12-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/lchunhui/demor2/blob/57763877a74ed5da94f79bf4e243b38e19563694/analysis/power.Rmd" target="_blank">5776387</a>
 </td>
 <td>
@@ -677,8 +711,8 @@ from dataset or literature review.</li>
 </ul>
 <div id="two-sample-t-test" class="section level2">
 <h2>Two-sample t-test</h2>
-<div id="pwrpwr.t.est" class="section level3">
-<h3>pwr::pwr.t.est</h3>
+<div id="pwrpwr.t.test" class="section level3">
+<h3>pwr::pwr.t.test</h3>
 <p>Assuming an effect size of 1, we’ll need at least 17 subjects in each
 group to detect the difference with at least 80% power using <span
 class="math inline">\(\alpha\)</span>=0.05 and two-sided testing.</p>
@@ -712,6 +746,19 @@ pwr.t2n.test(n1 = 198, n2 = 37, power = 0.8)</code></pre>
       sig.level = 0.05
           power = 0.8
     alternative = two.sided</code></pre>
+</div>
+</div>
+<div id="chi-squared-test" class="section level2">
+<h2>Chi-squared test</h2>
+<div id="nqueryptt0pu-1" class="section level3">
+<h3>nQuery::PTT0PU-1</h3>
+<p><code>pwr.2p2n.test</code> is not applicable since we assume certain
+proportion of group 1 based on literature review. Assuming that roughly
+35% of group 1 will develop the outcome, with the observed samples
+sizes, we are able to detect a difference in proportions of 9.3% (35% in
+group 1 vs. 44.3% in group 2) with 80% power using <span
+class="math inline">\(\alpha\)</span>=0.05 and two-sided testing, based
+on the chi-squared test.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
