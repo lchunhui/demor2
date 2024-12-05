@@ -9,14 +9,15 @@ editor_options:
 
 Some notes on power/sample size calculation from the [pwr](https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html) tutorial and prior experience. Before jumping into the calculation, things-to-do are listed in the following: 
 
-* Exposure and outcome type/distribution: to determine which test to use.
+* Exposure and outcome type/distribution: determine which test to use.
+* Minimal clinically important difference (MCID): expect the smallest meaningful change.  
 * Power and significance level ($\alpha$): usually apply **80%** and **0.05** as the setup.
 * For power calculation, number of samples collected per group is necessary. 
 * For sample size calculation, effect size ($|\mu_1 - \mu_2|/\sigma$) or its components are necessary. You can either make assumption of it or obtain estimates from dataset or literature review. 
 
 ```{r, echo=FALSE}
 # install.packages('pwr')
-library(pwr)
+library(pwr); library(Exact)
 ```
 
 ## Two-sample t-test
@@ -43,5 +44,17 @@ pwr.t2n.test(n1 = 198, n2 = 37, power = 0.8)
 
 ### nQuery::PTT0PU-1
 
-`pwr.2p2n.test` is not applicable since we assume certain proportion of group 1 based on literature review. Assuming that roughly 35% of group 1 will develop the outcome, with the observed samples sizes, we are able to detect a difference in proportions of 9.3% (35% in group 1 vs. 44.3% in group 2) with 80% power using $\alpha$=0.05 and two-sided testing, based on the chi-squared test.
+`pwr.2p2n.test` is not applicable since we assume certain proportion of group 1 based on literature review. Assuming that roughly 35% of group 1 will develop the outcome, with the observed samples sizes, we are able to detect a difference in proportions of 9.3% (35% in group 1 vs. 44.3% in group 2) with 80% power using $\alpha$=0.05 and two-sided testing.
+
+## Fisher's exact test
+
+### Exact::power.exact.test
+
+With an overall sample size of 30 and 5 per skin type, only a difference between 0% and 100% could be detected with 80% power using $\alpha$=0.05 and two-sided testing. Under same assumption, the differences between 0% and 80% or 20% and 100% could be detected with power between 70% and 80%. Those are large differences which may not be observed in the study with small sample size per group.
+
+```{r}
+power.exact.test(0, 1, 5, 5, method = 'fisher')
+# equivalent: c(0.2, 1, 5, 5)
+power.exact.test(0, 0.8, 5, 5, method = 'fisher')
+```
 
