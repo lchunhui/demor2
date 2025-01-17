@@ -426,7 +426,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-12-03
+<strong>Last updated:</strong> 2025-01-17
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -557,15 +557,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree3cd7a719cadc36638475079a9213b6022b71f9b5targetblank3cd7a71a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree7fc704b715d860b435da063410a1036a5c663020targetblank7fc704ba">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/lchunhui/demor2/tree/3cd7a719cadc36638475079a9213b6022b71f9b5" target="_blank">3cd7a71</a>
+<a href="https://github.com/lchunhui/demor2/tree/7fc704b715d860b435da063410a1036a5c663020" target="_blank">7fc704b</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree3cd7a719cadc36638475079a9213b6022b71f9b5targetblank3cd7a71a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree7fc704b715d860b435da063410a1036a5c663020targetblank7fc704ba"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -575,7 +575,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/lchunhui/demor2/tree/3cd7a719cadc36638475079a9213b6022b71f9b5" target="_blank">3cd7a71</a>.
+<a href="https://github.com/lchunhui/demor2/tree/7fc704b715d860b435da063410a1036a5c663020" target="_blank">7fc704b</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -635,6 +635,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lchunhui/demor2/blob/7fc704b715d860b435da063410a1036a5c663020/analysis/twangContinuous.Rmd" target="_blank">7fc704b</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-01-17
+</td>
+<td>
+Update table1 page (type argument).
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lchunhui/demor2/2739810de51810b2bdb0c02ce5dcd3320e337002/docs/twangContinuous.html" target="_blank">2739810</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2024-12-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -727,7 +761,6 @@ to one only adjusting for that variable. Only if the
 <strong>absolute</strong> % change is large enough (say &gt;10%), then
 include it in the final confounder list.</p></li>
 </ul>
-<pre><code>Warning: package &#39;gtsummary&#39; was built under R version 4.4.1</code></pre>
 <div id="gradient-boosted-regression" class="section level2">
 <h2>Gradient Boosted Regression</h2>
 <p><code>ps.cont</code> calculates propensity scores by gradient boosted
@@ -758,6 +791,43 @@ iterations in the GBR algorithm. Model balance reached optimal around
 350-ish iteration.</p>
 <pre class="r"><code>plot(pswt, plots = &quot;optimize&quot;) # visualize the iteration process</code></pre>
 <p><img src="figure/twangContinuous.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lchunhui/demor2/blob/2739810de51810b2bdb0c02ce5dcd3320e337002/docs/figure/twangContinuous.Rmd/unnamed-chunk-3-1.png" target="_blank">2739810</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2024-12-03
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>The average absolute correlation <code>mean.wcor</code> was minimized
 at iteration <code>iter</code> 347, which means the specified
 <code>n.trees</code> allowed GBR to explore sufficiently complicated
@@ -779,6 +849,43 @@ treatA      0.053  0.016
 treatB     -0.053 -0.016</code></pre>
 <pre class="r"><code>plot(pswt, plots = &quot;es&quot;) # visualize the balance table</code></pre>
 <p><img src="figure/twangContinuous.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lchunhui/demor2/blob/2739810de51810b2bdb0c02ce5dcd3320e337002/docs/figure/twangContinuous.Rmd/unnamed-chunk-5-1.png" target="_blank">2739810</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2024-12-03
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="causal-effect" class="section level2">
 <h2>Causal Effect</h2>
@@ -1739,7 +1846,7 @@ Session information
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>R version 4.4.0 (2024-04-24)
 Platform: aarch64-apple-darwin20
-Running under: macOS 15.1.1
+Running under: macOS 15.2
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
