@@ -22,6 +22,7 @@ Some notes on generating Table 1 from the  [tbl_summary()](https://www.danieldsj
   * `label=` argument: specify `age` label.
   * `statistic=` argument: specify **Mean (SD)** to display for `age`.
   * `digits=` argument: mean/median and SD/IQR round to 1 decimal place; n rounds to 0 decimal place and % rounds to 1 decimal place.
+  * `type=` argument: `continuous2` shows two or more specified summary statistics at once. 
   * `missing_text=` argument: change default text for missing observations.
 
 * `add_p()`
@@ -29,7 +30,7 @@ Some notes on generating Table 1 from the  [tbl_summary()](https://www.danieldsj
   * `test=` argument: specify **t-test** to perform for `age`.
   * `pvalue_fun=` argument: p-values round to 2 digits.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 # install.packages('gtsummary')
 library(gtsummary)
 ```
