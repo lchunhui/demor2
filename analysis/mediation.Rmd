@@ -1,0 +1,65 @@
+---
+title: "Causal Mediation Analysis"
+author: "Chun-Hui Lin"
+date: "2025-02-11"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on causal mediation analysis from VanderWeele's [materials](https://hsph.harvard.edu/research/vanderweele-lab/tools-and-tutorials).
+
+## Traditional Approach
+
+<ins>**Symbols**</ins>
+
+* $A$: exposure of interest
+* $M$: potential mediator
+* $Y$: outcome
+* $C$: baseline covariates
+
+### The Difference Method
+
+M1: a regression of the outcome $Y$ on the exposure $A$ and covariates $C$
+
+<p style="text-align: center;">$E[Y|a, c] =$ $\phi_0$ $+$ $\phi_1a$ $+$ $\phi'_4c$</p>
+
+$\phi_1$ is interpreted as the **total effect** (TE) of the exposure $A$ on the outcome $Y$.
+
+<br/>
+
+M2: similar but add the mediator $M$ in the regression as well
+
+<p style="text-align: center;">$E[Y|a, m, c] =$ $\theta_0$ $+$ $\theta_1a$ $+$ $\theta_2m$ $+$ $\theta'_4c$</p>
+
+$\theta_1$ is interpreted as the **direct effect** (DE) of $A$ on $Y$ when control has been made for the mediator.
+
+The difference of TE and DE is interpreted as the **indirect effect** (IE), th effect of $A$ on $Y$ explaining by the mediator.
+
+<p style="text-align: center;">$IE =$ $\phi_1$ $-$ $\theta_1$</p>
+
+### The Product Method
+
+Once again, M2 is employed.
+
+M3: a regression of the mediator $M$ on the exposure $A$ and covariates $C$
+
+<p style="text-align: center;">$E[M|a, c] =$ $\beta_0$ $+$ $\beta_1a$ $+$ $\beta'_2c$</p>
+
+Then, substitute M3 in M2 for $m$.
+
+<p style="text-align: center;">$E_M[E[Y|a, m, c]]$ 
+<br/> $=$ $\theta_0$ $+$ $\theta_1a$ $+$ $\theta_2(\beta_0 + \beta_1a + \beta'_2c)$ $+$ $\theta'_4c$ <br/> $=$ $\theta_0$ $+$ $(\theta_1 + \theta_2\beta_1)a$ $+$ $(\theta_2\beta'_2c + \theta_2\beta_0 + \theta'_4c)$</p>
+
+<p style="text-align: center;">$DE =$ $\theta_1$ <br/>
+$IE =$ $\theta_2$$\beta_1$</p>
+
+The interpretation of DE is the same as the difference method. The IE, however, is interpreted as the effect of the exposure on the mediator $\beta_1$ times the effect of the mediator on the
+outcome $\theta_2$.
+
+<ins>**Limitations**</ins>
+
+* Two methosd differ in the case of binary outcome.
+* Confounders for the mediator-outcome relationship may exist.
+
+## Conterfactual Approach

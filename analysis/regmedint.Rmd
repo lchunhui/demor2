@@ -1,0 +1,18 @@
+---
+title: "regmedint"
+author: "Chun-Hui Lin"
+date: "2025-02-11"
+output:
+  workflowr::wflow_html:
+    toc: false
+editor_options:
+  chunk_output_type: console
+---
+
+Some notes on conducting causal mediation analysis with time-to-event outcomes. Since `gsem` from Stata did not support Cox as outcome model, [`regmedint`](https://kaz-yos.github.io/regmedint/) was utilized instead. 
+
+```{r, echo=FALSE, warning=FALSE}
+# install.packages('regmedint')
+library(regmedint)
+```
+

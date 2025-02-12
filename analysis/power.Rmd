@@ -1,5 +1,5 @@
 ---
-title: "Power Analysis"
+title: "Power Justification"
 author: "Chun-Hui Lin"
 date: "2024-12-03"
 output: workflowr::wflow_html

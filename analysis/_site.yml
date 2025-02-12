@@ -13,7 +13,9 @@ navbar:
       href: regression.html
     - text: Survival Analysis
       href: survival.html
-    - text: Power Analysis
+    - text: Causal Mediation Analysis
+      href: mediation.html
+    - text: Power Justification
       href: power.html
   - text: Packages
     menu:
@@ -21,6 +23,8 @@ navbar:
       href: tidyverse.html
     - text: twangContinuous
       href: twangContinuous.html
+    - text: regmedint
+      href: regmedint.html
   - text: About
     href: about.html
   - text: License
