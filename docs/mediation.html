@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Chun-Hui Lin" />
 
+<meta name="date" content="2025-02-11" />
 
-<title>License</title>
+<title>Causal Mediation Analysis</title>
 
 <script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -231,6 +236,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -238,6 +306,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -323,7 +401,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">License</h1>
+<h1 class="title toc-ignore">Causal Mediation Analysis</h1>
+<h4 class="author">Chun-Hui Lin</h4>
+<h4 class="date">2025-02-11</h4>
 
 </div>
 
@@ -449,8 +529,8 @@ have uncommitted changes.
 <div id="versions" class="tab-pane fade">
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/license.Rmd</code>) and HTML
-(<code>docs/license.html</code>) files. If you’ve configured a remote
+made to the R Markdown (<code>analysis/mediation.Rmd</code>) and HTML
+(<code>docs/mediation.html</code>) files. If you’ve configured a remote
 Git repository (see <code>?wflow_git_remote</code>), click on the
 hyperlinks in the table below to view the files as they were in that
 past version.
@@ -479,155 +559,19 @@ Message
 <tbody>
 <tr>
 <td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/8d0c926169f4fe59aecbb4b523314ef8a10c6a1c/docs/license.html" target="_blank">8d0c926</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-12-03
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/2af34c5c5fdf35a46e0abbc47f9a30644dad81c0/docs/license.html" target="_blank">2af34c5</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/b8b756f3489165b5fc69037a4c53d3c7b9bd5baa/docs/license.html" target="_blank">b8b756f</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/b9077436691b4cefd1231e002f9d998742a71247/docs/license.html" target="_blank">b907743</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/f1269bbb1921a56adc53ec8af73929e903b93f2e/docs/license.html" target="_blank">f1269bb</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/5becf00bc79e9a2dd0d8e16a8ab79ee559492097/docs/license.html" target="_blank">5becf00</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/lchunhui/demor2/4ba6f82a1622a75fc15602251c3a3ea9b475c145/docs/license.html" target="_blank">4ba6f82</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
 Rmd
 </td>
 <td>
-<a href="https://github.com/lchunhui/demor2/blob/5a1668a3b861eb9865caf6e63c34dfaa5da79c7e/analysis/license.Rmd" target="_blank">5a1668a</a>
+<a href="https://github.com/lchunhui/demor2/blob/6cda3131dfc2f6703c450e21032f9ab4f7981fda/analysis/mediation.Rmd" target="_blank">6cda313</a>
 </td>
 <td>
 Chun-Hui Lin
 </td>
 <td>
-2024-11-22
+2025-02-12
 </td>
 <td>
-Publish the initial files for demoR.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/lchunhui/demor2/blob/a304523d060a870e9dfcea440eb45466ecadf736/analysis/license.Rmd" target="_blank">a304523</a>
-</td>
-<td>
-Chun-Hui Lin
-</td>
-<td>
-2024-11-22
-</td>
-<td>
-Start workflowr project.
+Add mediation-related files.
 </td>
 </tr>
 </tbody>
@@ -637,9 +581,124 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>The content on this site is available under the <a
-href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>
-license.</p>
+<p>Some notes on causal mediation analysis from VanderWeele’s <a
+href="https://hsph.harvard.edu/research/vanderweele-lab/tools-and-tutorials">materials</a>.</p>
+<div id="traditional-approach" class="section level2">
+<h2>Traditional Approach</h2>
+<ins>
+<strong>Symbols</strong>
+</ins>
+<ul>
+<li><span class="math inline">\(A\)</span>: exposure of interest</li>
+<li><span class="math inline">\(M\)</span>: potential mediator</li>
+<li><span class="math inline">\(Y\)</span>: outcome</li>
+<li><span class="math inline">\(C\)</span>: baseline covariates</li>
+</ul>
+<div id="the-difference-method" class="section level3">
+<h3>The Difference Method</h3>
+<p>M1: a regression of the outcome <span
+class="math inline">\(Y\)</span> on the exposure <span
+class="math inline">\(A\)</span> and covariates <span
+class="math inline">\(C\)</span></p>
+<p style="text-align: center;">
+<span class="math inline">\(E[Y|a, c] =\)</span> <span
+class="math inline">\(\phi_0\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\phi_1a\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\phi&#39;_4c\)</span>
+</p>
+<p><span class="math inline">\(\phi_1\)</span> is interpreted as the
+<strong>total effect</strong> (TE) of the exposure <span
+class="math inline">\(A\)</span> on the outcome <span
+class="math inline">\(Y\)</span>.</p>
+<p><br/></p>
+<p>M2: similar but add the mediator <span
+class="math inline">\(M\)</span> in the regression as well</p>
+<p style="text-align: center;">
+<span class="math inline">\(E[Y|a, m, c] =\)</span> <span
+class="math inline">\(\theta_0\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\theta_1a\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\theta_2m\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\theta&#39;_4c\)</span>
+</p>
+<p><span class="math inline">\(\theta_1\)</span> is interpreted as the
+<strong>direct effect</strong> (DE) of <span
+class="math inline">\(A\)</span> on <span
+class="math inline">\(Y\)</span> when control has been made for the
+mediator.</p>
+<p>The difference of TE and DE is interpreted as the <strong>indirect
+effect</strong> (IE), th effect of <span
+class="math inline">\(A\)</span> on <span
+class="math inline">\(Y\)</span> explaining by the mediator.</p>
+<p style="text-align: center;">
+<span class="math inline">\(IE =\)</span> <span
+class="math inline">\(\phi_1\)</span> <span
+class="math inline">\(-\)</span> <span
+class="math inline">\(\theta_1\)</span>
+</p>
+</div>
+<div id="the-product-method" class="section level3">
+<h3>The Product Method</h3>
+<p>Once again, M2 is employed.</p>
+<p>M3: a regression of the mediator <span
+class="math inline">\(M\)</span> on the exposure <span
+class="math inline">\(A\)</span> and covariates <span
+class="math inline">\(C\)</span></p>
+<p style="text-align: center;">
+<span class="math inline">\(E[M|a, c] =\)</span> <span
+class="math inline">\(\beta_0\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\beta_1a\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\beta&#39;_2c\)</span>
+</p>
+<p>Then, substitute M3 in M2 for <span
+class="math inline">\(m\)</span>.</p>
+<p style="text-align: center;">
+<span class="math inline">\(E_M[E[Y|a, m, c]]\)</span> <br/> <span
+class="math inline">\(=\)</span> <span
+class="math inline">\(\theta_0\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\theta_1a\)</span> <span
+class="math inline">\(+\)</span> <span
+class="math inline">\(\theta_2(\beta_0 + \beta_1a +
+\beta&#39;_2c)\)</span> <span class="math inline">\(+\)</span> <span
+class="math inline">\(\theta&#39;_4c\)</span> <br/> <span
+class="math inline">\(=\)</span> <span
+class="math inline">\(\theta_0\)</span> <span
+class="math inline">\(+\)</span> <span class="math inline">\((\theta_1 +
+\theta_2\beta_1)a\)</span> <span class="math inline">\(+\)</span> <span
+class="math inline">\((\theta_2\beta&#39;_2c + \theta_2\beta_0 +
+\theta&#39;_4c)\)</span>
+</p>
+<p style="text-align: center;">
+<span class="math inline">\(DE =\)</span> <span
+class="math inline">\(\theta_1\)</span> <br/> <span
+class="math inline">\(IE =\)</span> <span
+class="math inline">\(\theta_2\)</span><span
+class="math inline">\(\beta_1\)</span>
+</p>
+<p>The interpretation of DE is the same as the difference method. The
+IE, however, is interpreted as the effect of the exposure on the
+mediator <span class="math inline">\(\beta_1\)</span> times the effect
+of the mediator on the outcome <span
+class="math inline">\(\theta_2\)</span>.</p>
+<ins>
+<strong>Limitations</strong>
+</ins>
+<ul>
+<li>Two methosd differ in the case of binary outcome.</li>
+<li>Confounders for the mediator-outcome relationship may exist.</li>
+</ul>
+</div>
+</div>
+<div id="conterfactual-approach" class="section level2">
+<h2>Conterfactual Approach</h2>
+</div>
 </div>
 </div>
 </div>
@@ -662,6 +721,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -694,6 +755,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
