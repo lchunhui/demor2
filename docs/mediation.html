@@ -432,7 +432,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-02-12
+<strong>Last updated:</strong> 2025-02-13
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -479,15 +479,15 @@ results.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree6cda3131dfc2f6703c450e21032f9ab4f7981fdatargetblank6cda313a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2treeb4f541e2cb4eef03eddf5c59bd404d7c1a461d34targetblankb4f541ea">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/lchunhui/demor2/tree/6cda3131dfc2f6703c450e21032f9ab4f7981fda" target="_blank">6cda313</a>
+<a href="https://github.com/lchunhui/demor2/tree/b4f541e2cb4eef03eddf5c59bd404d7c1a461d34" target="_blank">b4f541e</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree6cda3131dfc2f6703c450e21032f9ab4f7981fdatargetblank6cda313a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2treeb4f541e2cb4eef03eddf5c59bd404d7c1a461d34targetblankb4f541ea"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -497,7 +497,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/lchunhui/demor2/tree/6cda3131dfc2f6703c450e21032f9ab4f7981fda" target="_blank">6cda313</a>.
+<a href="https://github.com/lchunhui/demor2/tree/b4f541e2cb4eef03eddf5c59bd404d7c1a461d34" target="_blank">b4f541e</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -562,6 +562,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/lchunhui/demor2/blob/b4f541e2cb4eef03eddf5c59bd404d7c1a461d34/analysis/mediation.Rmd" target="_blank">b4f541e</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-02-13
+</td>
+<td>
+Update mediation page (counterfactual appriach).
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lchunhui/demor2/7081c3f7e579e5b0342c45466d694719dc3d0aee/docs/mediation.html" target="_blank">7081c3f</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-02-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/lchunhui/demor2/blob/6cda3131dfc2f6703c450e21032f9ab4f7981fda/analysis/mediation.Rmd" target="_blank">6cda313</a>
 </td>
 <td>
@@ -601,12 +635,8 @@ class="math inline">\(Y\)</span> on the exposure <span
 class="math inline">\(A\)</span> and covariates <span
 class="math inline">\(C\)</span></p>
 <p style="text-align: center;">
-<span class="math inline">\(E[Y|a, c] =\)</span> <span
-class="math inline">\(\phi_0\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\phi_1a\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\phi&#39;_4c\)</span>
+<span class="math inline">\(E[Y|a, c] = \phi_0 + \phi_1a +
+\phi&#39;_4c\)</span>
 </p>
 <p><span class="math inline">\(\phi_1\)</span> is interpreted as the
 <strong>total effect</strong> (TE) of the exposure <span
@@ -616,14 +646,8 @@ class="math inline">\(Y\)</span>.</p>
 <p>M2: similar but add the mediator <span
 class="math inline">\(M\)</span> in the regression as well</p>
 <p style="text-align: center;">
-<span class="math inline">\(E[Y|a, m, c] =\)</span> <span
-class="math inline">\(\theta_0\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\theta_1a\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\theta_2m\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\theta&#39;_4c\)</span>
+<span class="math inline">\(E[Y|a, m, c] = \theta_0 + \theta_1a +
+\theta_2m + \theta&#39;_4c\)</span>
 </p>
 <p><span class="math inline">\(\theta_1\)</span> is interpreted as the
 <strong>direct effect</strong> (DE) of <span
@@ -633,12 +657,9 @@ mediator.</p>
 <p>The difference of TE and DE is interpreted as the <strong>indirect
 effect</strong> (IE), th effect of <span
 class="math inline">\(A\)</span> on <span
-class="math inline">\(Y\)</span> explaining by the mediator.</p>
+class="math inline">\(Y\)</span> explained by the mediator.</p>
 <p style="text-align: center;">
-<span class="math inline">\(IE =\)</span> <span
-class="math inline">\(\phi_1\)</span> <span
-class="math inline">\(-\)</span> <span
-class="math inline">\(\theta_1\)</span>
+<span class="math inline">\(IE = \phi_1 - \theta_1\)</span>
 </p>
 </div>
 <div id="the-product-method" class="section level3">
@@ -649,38 +670,21 @@ class="math inline">\(M\)</span> on the exposure <span
 class="math inline">\(A\)</span> and covariates <span
 class="math inline">\(C\)</span></p>
 <p style="text-align: center;">
-<span class="math inline">\(E[M|a, c] =\)</span> <span
-class="math inline">\(\beta_0\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\beta_1a\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\beta&#39;_2c\)</span>
+<span class="math inline">\(E[M|a, c] = \beta_0 + \beta_1a +
+\beta&#39;_2c\)</span>
 </p>
 <p>Then, substitute M3 in M2 for <span
 class="math inline">\(m\)</span>.</p>
 <p style="text-align: center;">
 <span class="math inline">\(E_M[E[Y|a, m, c]]\)</span> <br/> <span
-class="math inline">\(=\)</span> <span
-class="math inline">\(\theta_0\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\theta_1a\)</span> <span
-class="math inline">\(+\)</span> <span
-class="math inline">\(\theta_2(\beta_0 + \beta_1a +
-\beta&#39;_2c)\)</span> <span class="math inline">\(+\)</span> <span
-class="math inline">\(\theta&#39;_4c\)</span> <br/> <span
-class="math inline">\(=\)</span> <span
-class="math inline">\(\theta_0\)</span> <span
-class="math inline">\(+\)</span> <span class="math inline">\((\theta_1 +
-\theta_2\beta_1)a\)</span> <span class="math inline">\(+\)</span> <span
-class="math inline">\((\theta_2\beta&#39;_2c + \theta_2\beta_0 +
-\theta&#39;_4c)\)</span>
+class="math inline">\(= \theta_0 + \theta_1a + \theta_2(\beta_0 +
+\beta_1a + \beta&#39;_2c) + \theta&#39;_4c\)</span> <br/> <span
+class="math inline">\(= \theta_0 + (\theta_1 + \theta_2\beta_1)a +
+(\theta_2\beta&#39;_2c + \theta_2\beta_0 + \theta&#39;_4c)\)</span>
 </p>
 <p style="text-align: center;">
-<span class="math inline">\(DE =\)</span> <span
-class="math inline">\(\theta_1\)</span> <br/> <span
-class="math inline">\(IE =\)</span> <span
-class="math inline">\(\theta_2\)</span><span
-class="math inline">\(\beta_1\)</span>
+<span class="math inline">\(DE = \theta_1\)</span> <br/> <span
+class="math inline">\(IE = \theta_2\beta_1\)</span>
 </p>
 <p>The interpretation of DE is the same as the difference method. The
 IE, however, is interpreted as the effect of the exposure on the
@@ -691,13 +695,67 @@ class="math inline">\(\theta_2\)</span>.</p>
 <strong>Limitations</strong>
 </ins>
 <ul>
-<li>Two methosd differ in the case of binary outcome.</li>
+<li>Two methods differ in the case of binary outcome.</li>
 <li>Confounders for the mediator-outcome relationship may exist.</li>
+<li>Interactions of the exposure-mediator relationship may exist.</li>
 </ul>
 </div>
 </div>
-<div id="conterfactual-approach" class="section level2">
-<h2>Conterfactual Approach</h2>
+<div id="counterfactual-approach" class="section level2">
+<h2>Counterfactual Approach</h2>
+<ins>
+<strong>Symbols</strong>
+</ins>
+<ul>
+<li><span class="math inline">\(Y_a = Y(a)\)</span>: Y when setting
+<span class="math inline">\(A\)</span> to <span
+class="math inline">\(a\)</span></li>
+<li><span class="math inline">\(Y_{am} = Y(a, m)\)</span>: Y when
+setting <span class="math inline">\(A\)</span> to <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(M\)</span> to <span
+class="math inline">\(m\)</span></li>
+<li><span class="math inline">\(M_a = M(a)\)</span>: M when setting
+<span class="math inline">\(M\)</span> to <span
+class="math inline">\(m\)</span></li>
+</ul>
+<p style="text-align: center;">
+<span class="math inline">\(TE = Y_1 - Y_0 = Y_{1M_1} - Y_{0M_0} =
+(Y_{1M_1} - Y_{1M_0}) + (Y_{1M_0} -  Y_{0M_0}) = NIE + NDE\)</span>
+</p>
+<p><strong>Controlled direct effect</strong> (CDE): the outcome change
+on average when <span class="math inline">\(a = 1\)</span> → <span
+class="math inline">\(0\)</span> and <span class="math inline">\(M =
+m\)</span>.</p>
+<p style="text-align: center;">
+<span class="math inline">\(CDE(m) = Y_{1m} - Y_{0m}\)</span>
+</p>
+<p><strong>Natural direct effect</strong> (NDE): the outcome change on
+average when <span class="math inline">\(a = 1\)</span> → <span
+class="math inline">\(0\)</span> and the mediator is controlled at the
+level in the absence of the exposure.</p>
+<p style="text-align: center;">
+<span class="math inline">\(NDE = CDE(M_0) = Y_{1M_0} - Y_{0M_0} =
+Y_{1M(A = 0)} - Y_{0M(A = 0)}\)</span>
+</p>
+<p><strong>Natural indirect effect</strong> (NIE): the outcome change on
+average when <span class="math inline">\(a = 1\)</span> and the mediator
+change if <span class="math inline">\(a = 1\)</span> → <span
+class="math inline">\(0\)</span>.</p>
+<p style="text-align: center;">
+<span class="math inline">\(NIE = Y_{1M_1} - Y_{1M_0} = Y_{1M(A = 1)} -
+Y_{1M(A = 0)}\)</span>
+</p>
+<p><strong>Proportion Mediation</strong> (PM): how much of the effect is
+mediated.</p>
+<p style="text-align: center;">
+<span class="math inline">\(PM = \frac{NIE}{TE}\)</span>
+</p>
+<p><strong>Proportion Eliminated</strong> (PE): how much of the effect
+is eliminated when <span class="math inline">\(M = m\)</span>.</p>
+<p style="text-align: center;">
+<span class="math inline">\(PE = \frac{TE - CDE(m)}{TE}\)</span>
+</p>
 </div>
 </div>
 </div>
