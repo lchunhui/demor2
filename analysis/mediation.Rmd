@@ -22,7 +22,7 @@ Some notes on causal mediation analysis from VanderWeele's [materials](https://h
 
 M1: a regression of the outcome $Y$ on the exposure $A$ and covariates $C$
 
-<p style="text-align: center;">$E[Y|a, c] =$ $\phi_0$ $+$ $\phi_1a$ $+$ $\phi'_4c$</p>
+<p style="text-align: center;">$E[Y|a, c] = \phi_0 + \phi_1a + \phi'_4c$</p>
 
 $\phi_1$ is interpreted as the **total effect** (TE) of the exposure $A$ on the outcome $Y$.
 
@@ -30,13 +30,13 @@ $\phi_1$ is interpreted as the **total effect** (TE) of the exposure $A$ on the 
 
 M2: similar but add the mediator $M$ in the regression as well
 
-<p style="text-align: center;">$E[Y|a, m, c] =$ $\theta_0$ $+$ $\theta_1a$ $+$ $\theta_2m$ $+$ $\theta'_4c$</p>
+<p style="text-align: center;">$E[Y|a, m, c] = \theta_0 + \theta_1a + \theta_2m + \theta'_4c$</p>
 
 $\theta_1$ is interpreted as the **direct effect** (DE) of $A$ on $Y$ when control has been made for the mediator.
 
-The difference of TE and DE is interpreted as the **indirect effect** (IE), th effect of $A$ on $Y$ explaining by the mediator.
+The difference of TE and DE is interpreted as the **indirect effect** (IE), th effect of $A$ on $Y$ explained by the mediator.
 
-<p style="text-align: center;">$IE =$ $\phi_1$ $-$ $\theta_1$</p>
+<p style="text-align: center;">$IE = \phi_1 - \theta_1$</p>
 
 ### The Product Method
 
@@ -44,22 +44,54 @@ Once again, M2 is employed.
 
 M3: a regression of the mediator $M$ on the exposure $A$ and covariates $C$
 
-<p style="text-align: center;">$E[M|a, c] =$ $\beta_0$ $+$ $\beta_1a$ $+$ $\beta'_2c$</p>
+<p style="text-align: center;">$E[M|a, c] = \beta_0 + \beta_1a + \beta'_2c$</p>
 
 Then, substitute M3 in M2 for $m$.
 
 <p style="text-align: center;">$E_M[E[Y|a, m, c]]$ 
-<br/> $=$ $\theta_0$ $+$ $\theta_1a$ $+$ $\theta_2(\beta_0 + \beta_1a + \beta'_2c)$ $+$ $\theta'_4c$ <br/> $=$ $\theta_0$ $+$ $(\theta_1 + \theta_2\beta_1)a$ $+$ $(\theta_2\beta'_2c + \theta_2\beta_0 + \theta'_4c)$</p>
+<br/> $= \theta_0 + \theta_1a + \theta_2(\beta_0 + \beta_1a + \beta'_2c) + \theta'_4c$ 
+<br/> $= \theta_0 + (\theta_1 + \theta_2\beta_1)a + (\theta_2\beta'_2c + \theta_2\beta_0 + \theta'_4c)$</p>
 
-<p style="text-align: center;">$DE =$ $\theta_1$ <br/>
-$IE =$ $\theta_2$$\beta_1$</p>
+<p style="text-align: center;">$DE = \theta_1$ <br/>
+$IE = \theta_2\beta_1$</p>
 
 The interpretation of DE is the same as the difference method. The IE, however, is interpreted as the effect of the exposure on the mediator $\beta_1$ times the effect of the mediator on the
 outcome $\theta_2$.
 
 <ins>**Limitations**</ins>
 
-* Two methosd differ in the case of binary outcome.
+* Two methods differ in the case of binary outcome.
 * Confounders for the mediator-outcome relationship may exist.
+* Interactions of the exposure-mediator relationship may exist.
 
-## Conterfactual Approach
+## Counterfactual Approach
+
+<ins>**Symbols**</ins>
+
+* $Y_a = Y(a)$: Y when setting $A$ to $a$
+* $Y_{am} = Y(a, m)$: Y when setting $A$ to $a$ and $M$ to $m$
+* $M_a = M(a)$: M when setting $M$ to $m$
+
+<p style="text-align: center;">$TE = Y_1 - Y_0 = Y_{1M_1} - Y_{0M_0} = (Y_{1M_1} - Y_{1M_0}) + (Y_{1M_0} -  Y_{0M_0}) = NIE + NDE$</p>
+
+**Controlled direct effect** (CDE): the outcome change on average when $a = 1$ &rarr; $0$ and $M = m$.
+
+<p style="text-align: center;">$CDE(m) = Y_{1m} - Y_{0m}$</p>
+
+**Natural direct effect** (NDE): the outcome change on average when $a = 1$ &rarr; $0$ and the mediator is controlled at the level in the absence of the exposure.
+
+<p style="text-align: center;">$NDE = CDE(M_0) = Y_{1M_0} - Y_{0M_0} = Y_{1M(A = 0)} - Y_{0M(A = 0)}$</p>
+
+**Natural indirect effect** (NIE): the outcome change on average when $a = 1$ and the mediator change if $a = 1$ &rarr; $0$.
+
+<p style="text-align: center;">$NIE = Y_{1M_1} - Y_{1M_0} = Y_{1M(A = 1)} - Y_{1M(A = 0)}$</p>
+
+**Proportion Mediation** (PM): how much of the effect is mediated.
+
+<p style="text-align: center;">$PM = \frac{NIE}{TE}$</p>
+
+**Proportion Eliminated** (PE): how much of the effect is eliminated when $M = m$.
+
+<p style="text-align: center;">$PE = \frac{TE - CDE(m)}{TE}$</p>
+
+
