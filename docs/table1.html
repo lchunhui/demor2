@@ -356,7 +356,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-02-12
+<strong>Last updated:</strong> 2025-06-24
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -487,15 +487,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree6cda3131dfc2f6703c450e21032f9ab4f7981fdatargetblank6cda313a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2treec7d008272b3289e2429f34a0e94cba43a1cdb62atargetblankc7d0082a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/lchunhui/demor2/tree/6cda3131dfc2f6703c450e21032f9ab4f7981fda" target="_blank">6cda313</a>
+<a href="https://github.com/lchunhui/demor2/tree/c7d008272b3289e2429f34a0e94cba43a1cdb62a" target="_blank">c7d0082</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree6cda3131dfc2f6703c450e21032f9ab4f7981fdatargetblank6cda313a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2treec7d008272b3289e2429f34a0e94cba43a1cdb62atargetblankc7d0082a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -505,7 +505,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/lchunhui/demor2/tree/6cda3131dfc2f6703c450e21032f9ab4f7981fda" target="_blank">6cda313</a>.
+<a href="https://github.com/lchunhui/demor2/tree/c7d008272b3289e2429f34a0e94cba43a1cdb62a" target="_blank">c7d0082</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -564,6 +564,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lchunhui/demor2/blob/c7d008272b3289e2429f34a0e94cba43a1cdb62a/analysis/table1.Rmd" target="_blank">c7d0082</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-06-24
+</td>
+<td>
+Update table1 page (continuous2).
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lchunhui/demor2/7081c3f7e579e5b0342c45466d694719dc3d0aee/docs/table1.html" target="_blank">7081c3f</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-02-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -746,8 +780,8 @@ less than 5, Fisher’s exact test is performed by default.</li>
 <li><code>by=</code> argument: summary statistics split by treatment
 group.</li>
 <li><code>label=</code> argument: specify <code>age</code> label.</li>
-<li><code>statistic=</code> argument: specify <strong>Mean (SD)</strong>
-to display for <code>age</code>.</li>
+<li><code>statistic=</code> argument: specify descriptive statistics to
+display for <code>age</code>.</li>
 <li><code>digits=</code> argument: mean/median and SD/IQR round to 1
 decimal place; n rounds to 0 decimal place and % rounds to 1 decimal
 place.</li>
@@ -766,9 +800,12 @@ perform for <code>age</code>.</li>
 <pre class="r"><code>trial %&gt;%
   tbl_summary(by = trt,
               label = age ~ &#39;Age at Screening&#39;,
-              statistic = age ~ &#39;{mean} ({sd})&#39;,
+              statistic = all_continuous2() ~ c(&#39;{mean} ({sd})&#39;, 
+                                                &#39;{median} ({p25} - {p75})&#39;, 
+                                                &#39;{min} - {max}&#39;),
               digits = list(all_continuous() ~ c(1, 1),
                             all_categorical() ~ c(0, 1)),
+              type = age ~ &#39;continuous2&#39;,
               missing_text = &#39;(Missing)&#39;) %&gt;%
   add_p(test = age ~ &#39;t.test&#39;, 
         pvalue_fun = ~ style_pvalue(.x, digits = 2)) %&gt;% # add p-values
@@ -1233,10 +1270,25 @@ N = 102<span class="gt_footnote_marks" style="white-space:nowrap;font-style:ital
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Age at Screening</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td>
+<td headers="stat_1" class="gt_row gt_center"><br /></td>
+<td headers="stat_2" class="gt_row gt_center"><br /></td>
+<td headers="p.value" class="gt_row gt_center">0.83</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Mean (SD)</td>
 <td headers="stat_0" class="gt_row gt_center">47.2 (14.3)</td>
 <td headers="stat_1" class="gt_row gt_center">47.0 (14.7)</td>
 <td headers="stat_2" class="gt_row gt_center">47.4 (14.0)</td>
-<td headers="p.value" class="gt_row gt_center">0.83</td></tr>
+<td headers="p.value" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Median (Q1 - Q3)</td>
+<td headers="stat_0" class="gt_row gt_center">47.0 (38.0 - 57.0)</td>
+<td headers="stat_1" class="gt_row gt_center">46.0 (37.0 - 60.0)</td>
+<td headers="stat_2" class="gt_row gt_center">48.0 (39.0 - 56.0)</td>
+<td headers="p.value" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Min - Max</td>
+<td headers="stat_0" class="gt_row gt_center">6.0 - 83.0</td>
+<td headers="stat_1" class="gt_row gt_center">6.0 - 78.0</td>
+<td headers="stat_2" class="gt_row gt_center">9.0 - 83.0</td>
+<td headers="p.value" class="gt_row gt_center"><br /></td></tr>
     <tr><td headers="label" class="gt_row gt_left">    (Missing)</td>
 <td headers="stat_0" class="gt_row gt_center">11</td>
 <td headers="stat_1" class="gt_row gt_center">7</td>
@@ -1321,7 +1373,7 @@ N = 102<span class="gt_footnote_marks" style="white-space:nowrap;font-style:ital
   
   <tfoot class="gt_footnotes">
     <tr>
-      <td class="gt_footnote" colspan="5"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Mean (SD); Median (Q1, Q3); n (%)</td>
+      <td class="gt_footnote" colspan="5"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (Q1, Q3); n (%)</td>
     </tr>
     <tr>
       <td class="gt_footnote" colspan="5"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Welch Two Sample t-test; Wilcoxon rank sum test; Pearson’s Chi-squared test</td>
@@ -1340,7 +1392,7 @@ Session information
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>R version 4.4.0 (2024-04-24)
 Platform: aarch64-apple-darwin20
-Running under: macOS 15.3
+Running under: macOS 15.5
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
