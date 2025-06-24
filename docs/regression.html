@@ -432,7 +432,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-02-12
+<strong>Last updated:</strong> 2025-06-24
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -563,15 +563,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree6cda3131dfc2f6703c450e21032f9ab4f7981fdatargetblank6cda313a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2treef9912f8c14833f6f0e3348fe904becb3e672a18btargetblankf9912f8a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/lchunhui/demor2/tree/6cda3131dfc2f6703c450e21032f9ab4f7981fda" target="_blank">6cda313</a>
+<a href="https://github.com/lchunhui/demor2/tree/f9912f8c14833f6f0e3348fe904becb3e672a18b" target="_blank">f9912f8</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree6cda3131dfc2f6703c450e21032f9ab4f7981fdatargetblank6cda313a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2treef9912f8c14833f6f0e3348fe904becb3e672a18btargetblankf9912f8a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -581,7 +581,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/lchunhui/demor2/tree/6cda3131dfc2f6703c450e21032f9ab4f7981fda" target="_blank">6cda313</a>.
+<a href="https://github.com/lchunhui/demor2/tree/f9912f8c14833f6f0e3348fe904becb3e672a18b" target="_blank">f9912f8</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -641,6 +641,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lchunhui/demor2/blob/f9912f8c14833f6f0e3348fe904becb3e672a18b/analysis/regression.Rmd" target="_blank">f9912f8</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-06-24
+</td>
+<td>
+Update regression page (Poisson regression).
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lchunhui/demor2/7081c3f7e579e5b0342c45466d694719dc3d0aee/docs/regression.html" target="_blank">7081c3f</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-02-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1795,6 +1829,16 @@ obtain robust standard errors.</li>
 2         age 1.01 (1.00-1.03, p=0.089)
 3     gradeII 0.90 (0.53-1.52, p=0.686)
 4    gradeIII 1.01 (0.61-1.66, p=0.982)</code></pre>
+<pre class="r"><code># cross check using riskratio()
+fit_rr = risks::riskratio(formula =response ~ trt + age + grade, approach = &quot;robpoisson&quot;, data = trial)
+broom::tidy(fit_rr, exponentiate = T)[-1, c(1:2, 6:7, 5)]</code></pre>
+<pre><code># A tibble: 4 × 5
+  term      estimate conf.low conf.high p.value
+  &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 trtDrug B    1.09     0.712      1.66  0.695 
+2 age          1.01     0.998      1.03  0.0891
+3 gradeII      0.897    0.530      1.52  0.686 
+4 gradeIII     1.01     0.611      1.66  0.982 </code></pre>
 </div>
 </div>
 <div id="ordinal-outcome" class="section level2">
@@ -2325,7 +2369,7 @@ Session information
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>R version 4.4.0 (2024-04-24)
 Platform: aarch64-apple-darwin20
-Running under: macOS 15.3
+Running under: macOS 15.5
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
@@ -2352,32 +2396,32 @@ loaded via a namespace (and not attached):
  [16] compiler_4.4.0       rlang_1.1.4          sass_0.4.9          
  [19] tools_4.4.0          utf8_1.2.4           yaml_2.3.10         
  [22] gt_0.10.1            knitr_1.48           xml2_1.3.6          
- [25] withr_3.0.1          purrr_1.0.2          datawizard_0.11.0   
- [28] nnet_7.3-19          grid_4.4.0           fansi_1.0.6         
- [31] git2r_0.33.0         jomo_2.7-6           xtable_1.8-4        
- [34] colorspace_2.1-1     mice_3.16.0          ggplot2_3.5.1       
- [37] emmeans_1.10.6       scales_1.3.0         iterators_1.0.14    
- [40] MASS_7.3-60.2        insight_0.20.2       mvtnorm_1.3-1       
- [43] cli_3.6.3            rmarkdown_2.28       generics_0.1.3      
- [46] rstudioapi_0.16.0    httr_1.4.7           parameters_0.22.0   
- [49] commonmark_1.9.1     minqa_1.2.8          cachem_1.1.0        
- [52] stringr_1.5.1        splines_4.4.0        vctrs_0.6.5         
- [55] sandwich_3.1-0       boot_1.3-30          glmnet_4.1-8        
- [58] Matrix_1.7-0         jsonlite_1.8.9       callr_3.7.6         
- [61] hms_1.1.3            mitml_0.4-5          foreach_1.5.2       
- [64] tidyr_1.3.1          jquerylib_0.1.4      glue_1.8.0          
- [67] nloptr_2.0.3         pan_1.9              codetools_0.2-20    
- [70] ps_1.7.6             stringi_1.8.4        gtable_0.3.5        
- [73] shape_1.4.6.1        later_1.3.2          lme4_1.1-35.3       
- [76] munsell_0.5.1        tibble_3.2.1         pillar_1.9.0        
- [79] htmltools_0.5.8.1    R6_2.5.1             rprojroot_2.0.4     
- [82] evaluate_1.0.0       lattice_0.22-6       markdown_1.12       
- [85] haven_2.5.4          backports_1.5.0      cards_0.3.0         
- [88] broom_1.0.7          httpuv_1.6.15        bslib_0.8.0         
- [91] Rcpp_1.0.13          coda_0.19-4.1        nlme_3.1-164        
- [94] whisker_0.4.1        xfun_0.47            zoo_1.8-12          
- [97] fs_1.6.4             forcats_1.0.0        getPass_0.2-4       
-[100] pkgconfig_2.0.3     </code></pre>
+ [25] withr_3.0.1          purrr_1.0.2          risks_0.4.3         
+ [28] datawizard_0.11.0    nnet_7.3-19          grid_4.4.0          
+ [31] fansi_1.0.6          git2r_0.33.0         jomo_2.7-6          
+ [34] xtable_1.8-4         colorspace_2.1-1     mice_3.16.0         
+ [37] ggplot2_3.5.1        emmeans_1.10.6       scales_1.3.0        
+ [40] iterators_1.0.14     MASS_7.3-60.2        insight_0.20.2      
+ [43] mvtnorm_1.3-1        cli_3.6.3            rmarkdown_2.28      
+ [46] generics_0.1.3       rstudioapi_0.16.0    httr_1.4.7          
+ [49] parameters_0.22.0    commonmark_1.9.1     minqa_1.2.8         
+ [52] cachem_1.1.0         stringr_1.5.1        splines_4.4.0       
+ [55] vctrs_0.6.5          sandwich_3.1-0       boot_1.3-30         
+ [58] glmnet_4.1-8         Matrix_1.7-0         jsonlite_1.8.9      
+ [61] callr_3.7.6          hms_1.1.3            mitml_0.4-5         
+ [64] foreach_1.5.2        tidyr_1.3.1          jquerylib_0.1.4     
+ [67] glue_1.8.0           nloptr_2.0.3         pan_1.9             
+ [70] codetools_0.2-20     ps_1.7.6             stringi_1.8.4       
+ [73] gtable_0.3.5         shape_1.4.6.1        later_1.3.2         
+ [76] lme4_1.1-35.3        munsell_0.5.1        tibble_3.2.1        
+ [79] pillar_1.9.0         htmltools_0.5.8.1    R6_2.5.1            
+ [82] rprojroot_2.0.4      evaluate_1.0.0       lattice_0.22-6      
+ [85] markdown_1.12        haven_2.5.4          backports_1.5.0     
+ [88] cards_0.3.0          broom_1.0.7          httpuv_1.6.15       
+ [91] bslib_0.8.0          Rcpp_1.0.13          coda_0.19-4.1       
+ [94] nlme_3.1-164         whisker_0.4.1        xfun_0.47           
+ [97] zoo_1.8-12           fs_1.6.4             forcats_1.0.0       
+[100] getPass_0.2-4        pkgconfig_2.0.3     </code></pre>
 </div>
 </div>
 </div>
