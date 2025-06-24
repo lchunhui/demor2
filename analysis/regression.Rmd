@@ -62,6 +62,12 @@ tidy_robust(glm(response ~ trt + age + grade, trial, family = 'poisson'),
   finalfit::condense_fit(estimate_name = "RR (robust SE)")
 ```
 
+```{r}
+# cross check using riskratio()
+fit_rr = risks::riskratio(formula =response ~ trt + age + grade, approach = "robpoisson", data = trial)
+broom::tidy(fit_rr, exponentiate = T)[-1, c(1:2, 6:7, 5)]
+```
+
 ## Ordinal Outcome
 
 ### Multinomial Logistic Regression

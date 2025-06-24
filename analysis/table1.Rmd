@@ -20,7 +20,7 @@ Some notes on generating Table 1 from the  [tbl_summary()](https://www.danieldsj
 
   * `by=` argument: summary statistics split by treatment group. 
   * `label=` argument: specify `age` label.
-  * `statistic=` argument: specify descriptive statistics to display for `age`.
+  * `statistic=` argument: specify summary statistics to display for `age`.
   * `digits=` argument: mean/median and SD/IQR round to 1 decimal place; n rounds to 0 decimal place and % rounds to 1 decimal place.
   * `type=` argument: `continuous2` shows two or more specified summary statistics at once. 
   * `missing_text=` argument: change default text for missing observations.
