@@ -35,6 +35,15 @@ ggplot(starwars, aes(y = fct_infreq(hair_color))) +
   theme_bw()
 ```
 
+* `fct_inorder()`: order level by its first appearance in the dataset.
+
+```{r}
+ggplot(starwars, aes(y = fct_inorder(hair_color))) + 
+  geom_bar(fill = "steelblue", width = 0.75) + 
+  labs(x = "Frequency", y = "Hair color") + 
+  theme_bw()
+```
+
 ## Collapse Levels
 
 * `fct_lump()`: collapse infrequent levels into one "Other" level.
