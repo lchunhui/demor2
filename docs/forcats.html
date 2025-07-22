@@ -15,7 +15,7 @@
 
 <title>forcats</title>
 
-<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
@@ -37,8 +37,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -432,7 +432,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-02-12
+<strong>Last updated:</strong> 2025-07-22
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -563,15 +563,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree6cda3131dfc2f6703c450e21032f9ab4f7981fdatargetblank6cda313a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree184d0264b418489335cac0c55312736d55da7607targetblank184d026a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/lchunhui/demor2/tree/6cda3131dfc2f6703c450e21032f9ab4f7981fda" target="_blank">6cda313</a>
+<a href="https://github.com/lchunhui/demor2/tree/184d0264b418489335cac0c55312736d55da7607" target="_blank">184d026</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree6cda3131dfc2f6703c450e21032f9ab4f7981fdatargetblank6cda313a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomlchunhuidemor2tree184d0264b418489335cac0c55312736d55da7607targetblank184d026a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -581,7 +581,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/lchunhui/demor2/tree/6cda3131dfc2f6703c450e21032f9ab4f7981fda" target="_blank">6cda313</a>.
+<a href="https://github.com/lchunhui/demor2/tree/184d0264b418489335cac0c55312736d55da7607" target="_blank">184d026</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -641,6 +641,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lchunhui/demor2/blob/184d0264b418489335cac0c55312736d55da7607/analysis/forcats.Rmd" target="_blank">184d026</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-07-22
+</td>
+<td>
+Update forcats page (fct_inorder()).
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lchunhui/demor2/7081c3f7e579e5b0342c45466d694719dc3d0aee/docs/forcats.html" target="_blank">7081c3f</a>
+</td>
+<td>
+Chun-Hui Lin
+</td>
+<td>
+2025-02-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -704,6 +738,8 @@ href="https://forcats.tidyverse.org/"><code>forcats</code></a> site
 using <a
 href="https://dplyr.tidyverse.org/reference/starwars.html"><code>starwars</code></a>
 dataset as the example.</p>
+<pre><code>Warning: package &#39;ggplot2&#39; was built under R version 4.4.1</code></pre>
+<pre><code>Warning: package &#39;tibble&#39; was built under R version 4.4.1</code></pre>
 <div id="adddropreverse-levels" class="section level2">
 <h2>Add/Drop/Reverse Levels</h2>
 <pre class="r"><code>fct_expand(factor(c(&quot;a&quot;, &quot;b&quot;), levels = c(&quot;a&quot;, &quot;b&quot;)), &quot;c&quot;)</code></pre>
@@ -763,24 +799,13 @@ Chun-Hui Lin
 </table>
 </div>
 </div>
-</div>
-<div id="collapse-levels" class="section level2">
-<h2>Collapse Levels</h2>
 <ul>
-<li><p><code>fct_lump()</code>: collapse infrequent levels into one
-“Other” level.</p>
-<ul>
-<li><code>n=</code> argument: specify positive/negative n to keep
-most/least common n levels.</li>
-<li><code>prop=</code> argument: specify positive % to keep levels with
-at least % frequency.</li>
-<li><code>other_level=</code> argument: rename the lumped “Other”
-level.</li>
-</ul></li>
+<li><code>fct_inorder()</code>: order level by its first appearance in
+the dataset.</li>
 </ul>
-<pre class="r"><code>ggplot(starwars, aes(y = fct_infreq(fct_lump(skin_color, n = 5, other_level = &quot;other&quot;)))) + 
+<pre class="r"><code>ggplot(starwars, aes(y = fct_inorder(hair_color))) + 
   geom_bar(fill = &quot;steelblue&quot;, width = 0.75) + 
-  labs(x = &quot;Frequency&quot;, y = &quot;Skin color&quot;) + 
+  labs(x = &quot;Frequency&quot;, y = &quot;Hair color&quot;) + 
   theme_bw()</code></pre>
 <p><img src="figure/forcats.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
@@ -821,14 +846,23 @@ Chun-Hui Lin
 </div>
 </div>
 </div>
-<div id="sort-levels" class="section level2">
-<h2>Sort Levels</h2>
+<div id="collapse-levels" class="section level2">
+<h2>Collapse Levels</h2>
 <ul>
-<li><code>fct_reorder()</code>: reorder levels by another variable.</li>
+<li><p><code>fct_lump()</code>: collapse infrequent levels into one
+“Other” level.</p>
+<ul>
+<li><code>n=</code> argument: specify positive/negative n to keep
+most/least common n levels.</li>
+<li><code>prop=</code> argument: specify positive % to keep levels with
+at least % frequency.</li>
+<li><code>other_level=</code> argument: rename the lumped “Other”
+level.</li>
+</ul></li>
 </ul>
-<pre class="r"><code>ggplot(iris, aes(x = fct_reorder(Species, Sepal.Width), y = Sepal.Width)) +
-  geom_boxplot(fill = &quot;steelblue&quot;, width = 0.75) + 
-  labs(x = &quot;Species&quot;, y = &quot;Sepal width&quot;) +
+<pre class="r"><code>ggplot(starwars, aes(y = fct_infreq(fct_lump(skin_color, n = 5, other_level = &quot;other&quot;)))) + 
+  geom_bar(fill = &quot;steelblue&quot;, width = 0.75) + 
+  labs(x = &quot;Frequency&quot;, y = &quot;Skin color&quot;) + 
   theme_bw()</code></pre>
 <p><img src="figure/forcats.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
@@ -868,6 +902,17 @@ Chun-Hui Lin
 </table>
 </div>
 </div>
+</div>
+<div id="sort-levels" class="section level2">
+<h2>Sort Levels</h2>
+<ul>
+<li><code>fct_reorder()</code>: reorder levels by another variable.</li>
+</ul>
+<pre class="r"><code>ggplot(iris, aes(x = fct_reorder(Species, Sepal.Width), y = Sepal.Width)) +
+  geom_boxplot(fill = &quot;steelblue&quot;, width = 0.75) + 
+  labs(x = &quot;Species&quot;, y = &quot;Sepal width&quot;) +
+  theme_bw()</code></pre>
+<p><img src="figure/forcats.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -879,7 +924,7 @@ Session information
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>R version 4.4.0 (2024-04-24)
 Platform: aarch64-apple-darwin20
-Running under: macOS 15.3
+Running under: macOS 15.5
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
@@ -896,24 +941,23 @@ attached base packages:
 
 other attached packages:
  [1] lubridate_1.9.3 stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2    
- [5] readr_2.1.5     tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1  
+ [5] readr_2.1.5     tidyr_1.3.1     tibble_3.3.0    ggplot2_3.5.2  
  [9] tidyverse_2.0.0 forcats_1.0.0   workflowr_1.7.1
 
 loaded via a namespace (and not attached):
- [1] sass_0.4.9        utf8_1.2.4        generics_0.1.3    stringi_1.8.4    
- [5] hms_1.1.3         digest_0.6.37     magrittr_2.0.3    timechange_0.3.0 
- [9] evaluate_1.0.0    grid_4.4.0        fastmap_1.2.0     rprojroot_2.0.4  
-[13] jsonlite_1.8.9    processx_3.8.4    whisker_0.4.1     ps_1.7.6         
-[17] promises_1.3.0    httr_1.4.7        fansi_1.0.6       scales_1.3.0     
-[21] jquerylib_0.1.4   cli_3.6.3         rlang_1.1.4       munsell_0.5.1    
-[25] withr_3.0.1       cachem_1.1.0      yaml_2.3.10       tools_4.4.0      
-[29] tzdb_0.4.0        colorspace_2.1-1  httpuv_1.6.15     vctrs_0.6.5      
-[33] R6_2.5.1          lifecycle_1.0.4   git2r_0.33.0      fs_1.6.4         
-[37] pkgconfig_2.0.3   callr_3.7.6       pillar_1.9.0      bslib_0.8.0      
-[41] later_1.3.2       gtable_0.3.5      glue_1.8.0        Rcpp_1.0.13      
-[45] highr_0.11        xfun_0.47         tidyselect_1.2.1  rstudioapi_0.16.0
-[49] knitr_1.48        farver_2.1.2      htmltools_0.5.8.1 labeling_0.4.3   
-[53] rmarkdown_2.28    compiler_4.4.0    getPass_0.2-4    </code></pre>
+ [1] sass_0.4.10        generics_0.1.3     stringi_1.8.7      hms_1.1.3         
+ [5] digest_0.6.37      magrittr_2.0.3     timechange_0.3.0   evaluate_1.0.4    
+ [9] grid_4.4.0         RColorBrewer_1.1-3 fastmap_1.2.0      rprojroot_2.0.4   
+[13] jsonlite_2.0.0     processx_3.8.4     whisker_0.4.1      ps_1.7.6          
+[17] promises_1.3.0     httr_1.4.7         scales_1.4.0       jquerylib_0.1.4   
+[21] cli_3.6.5          rlang_1.1.6        withr_3.0.2        cachem_1.1.0      
+[25] yaml_2.3.10        tools_4.4.0        tzdb_0.4.0         httpuv_1.6.15     
+[29] vctrs_0.6.5        R6_2.6.1           lifecycle_1.0.4    git2r_0.33.0      
+[33] fs_1.6.6           pkgconfig_2.0.3    callr_3.7.6        pillar_1.10.2     
+[37] bslib_0.9.0        later_1.3.2        gtable_0.3.6       glue_1.8.0        
+[41] Rcpp_1.0.13        xfun_0.52          tidyselect_1.2.1   rstudioapi_0.17.1 
+[45] knitr_1.50         farver_2.1.2       htmltools_0.5.8.1  labeling_0.4.3    
+[49] rmarkdown_2.29     compiler_4.4.0     getPass_0.2-4     </code></pre>
 </div>
 </div>
 </div>
