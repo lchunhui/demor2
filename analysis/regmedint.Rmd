@@ -16,3 +16,17 @@ Some notes on conducting causal mediation analysis with time-to-event outcomes. 
 library(regmedint)
 ```
 
+* `regmedint()`
+
+  * `yvar` argument: outcome variable name (time variable for survival outcome).
+  * `eventvar` argument: event variable for survival outcome.
+  * `avar` argument: treatment variable name.
+  * `mvar` argument: mediator variable name.
+  * `cvar` argument: covariate names.
+  * `a0` argument: "untreated"; the reference level of treatment variable.
+  * `a1` argument: "treated".
+  * `m_cde` argument: mediator level at which controlled direct effect is evaluated at.
+  * `c_cond` argument: covariate level at which natural direct and indirect effects are evaluated at.
+  * `mreg` argument: mediator regression type.
+  * `yreg` argument: outcome regression type.
+
